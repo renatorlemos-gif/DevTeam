@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "DevTeam Model Router",
+  "description": "Configuração da matriz de modelos LLM por papel, balanceamento de custo-benefício e regras para seleção dinâmica.",
+  "version": "1.0.0",
+  "default_mode": "cost_benefit",
+  "roles": {
+    "analista_requisitos": {
+      "name": "Analista de Requisitos",
+      "default_model": "gemini-2.5-flash",
+      "temperature": 0.3,
+      "rationale": "Ampla janela de contexto para conversações longas, altíssima velocidade e custo de inferência desprezível durante rodadas investigativas exaustivas.",
+      "dynamic_escalation": {
+        "condition": "demanda envolver integração com múltiplos sistemas legados, normas regulatórias complexas ou modelagem matemática/financeira",
+        "escalated_model": "gemini-2.5-pro"
+      }
+    },
+    "product_owner": {
+      "name": "Product Owner",
+      "default_model": "gemini-2.5-flash",
+      "temperature": 0.2,
+      "rationale": "Excelente formatação estruturada, rigor sintático em BDD/Gherkin e alta precisão com custo reduzido.",
+      "dynamic_escalation": {
+        "condition": "gerenciamento de épicos corporativos massivos com mais de 30 histórias interdependentes",
+        "escalated_model": "gemini-2.5-pro"
+      }
+    },
+    "developer": {
+      "name": "Developer",
+      "default_model": "gemini-2.5-pro",
+      "fallback_model": "gemini-2.5-flash",
+      "temperature": 0.1,
+      "rationale": "Elevada acurácia sintática, raciocínio em múltiplos arquivos, refatorações sem regressão e geração precisa de suítes de testes.",
+      "dynamic_downgrade": {
+        "condition": "tarefas simples como scripts de automação, ajustes cosméticos de HTML/CSS ou documentação técnica",
+        "downgraded_model": "gemini-2.5-flash"
+      }
+    }
+  },
+  "automated_routing_strategy": {
+    "criteria": [
+      {
+        "complexity_level": "Baixa (Small)",
+        "indicators": ["CRUD padrão", "Ajustes de texto/UI", "Scripts utilitários", "Bug fixes simples"],
+        "assigned_models": {
+          "analista": "gemini-2.5-flash",
+          "po": "gemini-2.5-flash",
+          "developer": "gemini-2.5-flash"
+        }
+      },
+      {
+        "complexity_level": "Média (Medium)",
+        "indicators": ["Novas rotas de API com regras de validação", "Modelagem de tabelas relacionais", "Testes unitários extensivos"],
+        "assigned_models": {
+          "analista": "gemini-2.5-flash",
+          "po": "gemini-2.5-flash",
+          "developer": "gemini-2.5-pro"
+        }
+      },
+      {
+        "complexity_level": "Alta (Large / Critical)",
+        "indicators": ["Arquitetura distribuída / Microsserviços", "Concorrência e Locks", "Criptografia e Segurança Bancária", "Refatoração de Legado Amplo"],
+        "assigned_models": {
+          "analista": "gemini-2.5-pro",
+          "po": "gemini-2.5-flash",
+          "developer": "gemini-2.5-pro"
+        }
+      }
+    ]
+  }
+}
