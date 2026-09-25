@@ -1,47 +1,47 @@
-# DevTeam: Time Multi-Agente de Engenharia Ágil
+# DevTeam: Time Multi-Agente de Engenharia Ágil & Docs-as-Code
 
-Bem-vindo ao **DevTeam**, um ecossistema multi-agente de desenvolvimento de software de alta performance para o Google Antigravity e VS Code.
+Bem-vindo ao **DevTeam**, um ecossistema multi-agente de desenvolvimento de software de alta performance para o Google Antigravity e VS Code, orientado à governança **Docs-as-Code**.
 
-O DevTeam estrutura três papéis essenciais e independentes que trabalham em pipeline contínuo, com foco em clareza de requisitos, valor de negócio e testes automatizados.
+O DevTeam estrutura três papéis essenciais e independentes que trabalham em pipeline contínuo, cobrindo todo o ciclo de vida do software: **Features**, **Correção de Bugs (TDD Red/Green)** e **Decisões de Arquitetura (ADRs)**.
 
 ```mermaid
-graph LR
+graph TD
     subgraph AR [Analista de Requisitos]
-        A1[Entrevista Investigativa] --> A2[PRD v0.1..v0.x]
-        A2 --> A3[Homologação v1.0]
+        A1[Entrevista Investigativa] --> A2[PRD 0.1.0..0.x.0]
+        A2 --> A3[Homologação 1.0.0 Approved]
     end
 
     subgraph PO [Product Owner]
-        B1[Validação do PRD] --> B2[Histórias BDD/Gherkin]
+        B1[Validação do PRD] --> B2[Histórias BDD/Gherkin + Schemas + Restrições]
         B2 --> B3[Aprovação do Usuário]
     end
 
     subgraph DEV [Developer]
-        C1[Planejamento Técnico] --> C2[Código de Produção]
+        C1[Planejamento & ADR] --> C2[Código de Produção]
         C2 --> C3[Testes Automatizados 100% Verdes]
     end
 
-    AR -->|PRD v1.0 Aprovado| PO
-    PO -->|Histórias Aprovadas| DEV
+    AR -->|PRD 1.0.0 em docs/product/| PO
+    PO -->|Histórias em docs/specs/| DEV
 ```
 
 ---
 
-## 1. Os Três Papéis e Suas Regras
+## 1. As Três Trilhas Operacionais
 
-### 1.1. Analista de Requisitos (AR)
-* **LLM**: `gemini-2.5-flash` (rápido, conversacional, contexto massivo e custo mínimo).
-* **Protocolo Mandatório**: **Proibido finalizar requisitos na primeira interação**. O AR formula rodadas exaustivas de perguntas cobrindo problemas de negócio, escopo, regras de exceção e limites técnicos.
-* **Saída Obrigatória**: PRD formal versionado em `./docs/prds/PRD-v1.0-<feature>.md`.
+### 1.1. Trilha de Novas Funcionalidades (Evolução)
+* **Analista de Requisitos (AR)**: Elicitação exaustiva de requisitos em `./docs/product/prd-<feature>.md`.
+* **Product Owner (PO)**: Decomposição em Histórias de Usuário em `./docs/specs/us-<feature>.md` contendo critérios Gherkin, contratos JSON opcionais, testes e restrições ("O que NÃO fazer").
+* **Developer**: Implementação TDD com garantia de testes locais verdes.
 
-### 1.2. Product Owner (PO)
-* **LLM**: `gemini-2.5-flash` (alta precisão sintática em tabelas e formatação Gherkin).
-* **Portão de Bloqueio**: Rejeita qualquer demanda cujo PRD não seja `v1.0 (Aprovado)`.
-* **Saída Obrigatória**: Histórias em `./docs/stories/STORY-<feature>.md` com critérios `Dado / Quando / Então` e aprovação humana registrada antes da implementação.
+### 1.2. Trilha de Sustentação de Bugs (Bug Track)
+* Erro reportado com evidências e payload.
+* Skill `diagnostico-bug` gera especificação em `./docs/specs/bug-<slug>.md`.
+* **Developer** aplica o ciclo **TDD Red/Green**: primeiro cria o teste que reproduz a falha (Red) e depois aplica a correção até passar (Green) sem regressão.
 
-### 1.3. Developer
-* **LLM**: `gemini-2.5-pro` (ou `flash` com thinking para lógica avançada de código).
-* **Diretriz**: Desenvolvimento orientado a testes (TDD). Mapeia 100% dos cenários Gherkin para testes automatizados locais.
+### 1.3. Trilha de Decisão Arquitetural (Architecture Track)
+* Dilema técnico de persistência, framework ou dependência de infraestrutura.
+* Registro formal em `./docs/architecture/adr-<001>-<slug>.md` avaliando alternativas, prós, contras e trade-offs.
 
 ---
 
@@ -49,77 +49,81 @@ graph LR
 
 Você pode interagir com o time no chat do Antigravity através de comandos ou linguagem natural:
 
-* **Iniciar o Ciclo Completo**:
+* **Iniciar o Ciclo Completo de Feature**:
   > *"Vamos iniciar a funcionalidade de autenticação por e-mail com o DevTeam."*  
-  *(Ativa a skill `devteam-pipeline` que guia você pelas 3 fases).*
+  *(Ativa a skill `devteam-pipeline` que guia você pelas fases).*
 
-* **Acionar Fases Individuais**:
+* **Acionar Fases ou Trilhas Específicas**:
   - **Fase de Requisitos**: *"Atue como o Analista de Requisitos e me entreviste sobre o recurso X."*
   - **Fase de Refinamento**: *"Atue como o Product Owner e refine as histórias para o PRD v1.0 do recurso X."*
-  - **Fase de Desenvolvimento**: *"Atue como o Developer e implemente as histórias aprovadas com testes."*
+  - **Correção de Bug**: *"Atue como o time para diagnosticar o erro 500 no endpoint de checkout."*
+  - **Decisão Arquitetural**: *"Registre uma ADR para avaliar a migração de SQLite para PostgreSQL."*
 
 ---
 
-## 3. Como Usar no VS Code
+## 3. Utilitários de Linha de Comando (`cli.py` / `cli.ps1`)
 
-Você tem total liberdade para usar este mesmo time diretamente dentro do **VS Code**:
-
-1. Abra a pasta do seu projeto no VS Code (`File > Open Folder`).
-2. Abra o terminal integrado (`Ctrl + ~` ou ``Ctrl + ` ``).
-3. Inicie o Antigravity CLI:
-   ```bash
-   agy
-   ```
-4. O assistente lerá as regras do DevTeam e você poderá conversar normalmente. Conforme o Developer cria e edita código, você vê os arquivos abrindo e sendo modificados ao vivo na sua janela do VS Code!
-
----
-
-## 4. Utilitário de Suporte (`cli.py`)
-
-No terminal, você pode rodar ferramentas de apoio:
+O DevTeam disponibiliza scripts multiplataforma para terminal (Python ou PowerShell nativo):
 
 ```bash
-# Verificar PRDs e Histórias ativas
+# Inspecionar PRDs, USs, Bugs e ADRs ativos
 python cli.py status
+.\cli.ps1 status
 
-# Criar um novo rascunho de PRD a partir do template oficial
-python cli.py new-prd minha-nova-feature
+# Criar um novo PRD oficial com Frontmatter YAML
+python cli.py new-prd autenticacao-otp
+.\cli.ps1 new-prd autenticacao-otp
 
-# Inicializar um novo projeto para receber o DevTeam
+# Criar uma nova História de Usuário (US) blindada
+python cli.py new-us login-google
+.\cli.ps1 new-us login-google
+
+# Criar uma especificação de Bug com roteiro TDD Red/Green
+python cli.py new-bug erro-500-token
+.\cli.ps1 new-bug erro-500-token
+
+# Registrar uma Decisão de Arquitetura (ADR com numeração automática)
+python cli.py new-adr adocao-fastapi
+.\cli.ps1 new-adr adocao-fastapi
+
+# Criar um protótipo de tela interativo em React + Tailwind (Living Spec)
+python cli.py new-proto checkout-fluxo
+.\cli.ps1 new-proto checkout-fluxo
+
+# Inicializar um novo projeto para receber o DevTeam (com AGENTS.md e docs/prototypes)
 python cli.py init-repo C:\Dev\Projetos\NovoApp
-
-# Consultar a matriz de modelos e estratégias de escalação
-python cli.py models
+.\cli.ps1 init-repo C:\Dev\Projetos\NovoApp
 ```
 
 ---
 
-## 5. Estrutura de Diretórios
+## 4. Estrutura de Diretórios do DevTeam
 
 ```text
-C:\Dev\Projetos\DevTeam\
-├── .agents/
-│   ├── rules/
-│   │   ├── 01-analista-requisitos.md    # Regra de esgotamento e versionamento
-│   │   ├── 02-product-owner.md           # Critérios BDD e portões DoR/DoD
-│   │   └── 03-developer.md               # Padrões técnicos e testes
-│   └── skills/
-│       ├── devteam-pipeline/             # Orquestrador do fluxo completo
-│       ├── analise-requisitos/           # Habilidade do Analista
-│       ├── refinamento-po/               # Habilidade do PO
-│       └── desenvolvimento/              # Habilidade do Developer
+C:\Dev\Projetos\Particular\DevTeam\
+├── rules/
+│   └── GEMINI.md                             # Governança mestre, 3 trilhas e naming conventions
+├── skills/
+│   ├── devteam-pipeline/                     # Orquestrador do fluxo completo (com Gate 0)
+│   ├── analise-requisitos/                   # Habilidade do Analista (PRD)
+│   ├── refinamento-po/                       # Habilidade do PO (US / BDD)
+│   ├── desenvolvimento/                      # Habilidade do Developer (TDD / Prototipação)
+│   ├── prototipacao-ui/                      # Habilidade de prototipação visual em React
+│   ├── diagnostico-bug/                      # Habilidade de triagem de bugs (Red/Green)
+│   └── decisao-arquitetural/                 # Habilidade de ADRs arquiteturais
 ├── config/
-│   └── model_router.json                 # Matriz de LLMs por papel
+│   └── model_router.json                     # Matriz de LLMs por papel
 ├── docs/
-│   ├── prds/                             # Repositório de PRDs versionados
-│   ├── stories/                          # Repositório de Histórias BDD
 │   └── templates/
-│       ├── PRD-template.md               # Modelo oficial de PRD
-│       └── STORY-template.md             # Modelo oficial de Histórias
+│       ├── PRD-template.md                   # Modelo oficial com Frontmatter YAML
+│       ├── STORY-template.md                 # Modelo de Histórias (BDD + Schemas + Restrições + Protótipo)
+│       ├── BUG-template.md                   # Modelo de Bug (Causa Raiz + TDD)
+│       └── ADR-template.md                   # Modelo de Decisão Arquitetural
 ├── templates/
-│   └── repo-blueprint/                   # Blueprint para novos repositórios
-├── cli.py                                # Utilitário de linha de comando
-├── GEMINI.md                             # Governança do workspace
-├── plugin.json                           # Manifesto do plugin Antigravity
-└── README.md                             # Este manual
+│   └── repo-blueprint/
+│       └── AGENTS.md                         # Blueprint mestre para novos repositórios
+├── cli.py                                    # Utilitário CLI Python
+├── cli.ps1                                   # Utilitário CLI PowerShell
+├── plugin.json                               # Manifesto do plugin Antigravity
+└── README.md                                 # Este manual
 ```

@@ -1,35 +1,52 @@
 ---
 name: desenvolvimento
-description: Implementa o código da funcionalidade baseado estritamente nas Histórias de Usuário. A criação e execução de testes são delegadas ao usuário.
+description: Implementa o código de produção e testes automatizados no Modo Ciclo Completo, ou constrói protótipos em React e ADRs em docs/ quando no Modo Docs-as-Code Exclusivo.
 ---
 
-# Habilidade: Implementação Técnica
+# Habilidade: Implementação Técnica, Prototipação & Qualidade
 
-Esta habilidade é utilizada pelo **Developer** para converter os critérios de aceitação BDD em código executável.
-
----
-
-## 1. Verificação Pré-Desenvolvimento
-1. Abra e leia `./docs/stories/STORY-<nome-da-feature>.md`.
-2. Certifique-se de que os critérios de aceitação estejam claros e que o usuário tenha aprovado o início da implementação.
-3. Identifique o repositório ou pasta ativa onde o código deve ser construído ou modificado.
+Esta habilidade é utilizada pelo **Developer** para converter critérios de aceitação e especificações técnicas em artefatos executáveis (protótipos interativos ou código final de produção).
 
 ---
 
-## 2. Ciclo de Implementação
+## 1. Verificação de Entrada & Modo de Operação
 
-1. **Planejamento de Arquitetura**:
-   - Defina os módulos, classes ou endpoints necessários.
-   - Respeite os padrões de design do projeto existente (arquitetura em camadas, clean architecture, etc.).
-2. **Escrita do Código de Produção**:
-   - Implemente a lógica necessária para cumprir cada critério das histórias.
+1. Abra e leia `./docs/specs/us-<nome-da-feature>.md` (ou `./docs/specs/bug-<slug>.md`).
+2. Identifique o **Modo de Atuação do DevTeam** (no `AGENTS.md` ou alinhado no Gate 0):
+
+### 🅰️ Se Modo "Docs-as-Code Exclusivo":
+- **PROIBIÇÃO RIGOROSA:** Não toque em arquivos fora de `./docs/` (em `src/`, `tests/` ou configurações de projeto).
+- **Prototipação Visual em React (Se houver UI):**
+  - Crie a pasta `./docs/prototypes/<slug-da-feature>/`.
+  - Construa o protótipo funcional em React + Tailwind (preferencialmente standalone `index.html` ou componentes limpos) cobrindo estados: inicial, carregando, erro e sucesso.
+  - Crie o `README.md` explicativo e vincule o caminho na seção 3.1 da história em `docs/specs/`.
+- **Decisões Técnicas (ADR):** Se houver escolhas arquiteturais, registre em `./docs/architecture/adr-*.md`.
+- Conclua a entrega apresentando os links dos protótipos e especificações para o usuário.
+
+### 🅱️ Se Modo "Ciclo Completo" (End-to-End):
+- Siga para o ciclo de codificação em `src/` e testes automatizados em `tests/` conforme abaixo.
+
+---
+
+## 2. Ciclo de Implementação em Produção (Apenas Modo Ciclo Completo)
+
+1. **Planejamento de Arquitetura & ADR**:
+   - Defina os módulos, classes ou endpoints necessários em `src/`.
+   - Caso precise introduzir uma nova biblioteca ou padrão estrutural, crie um registro em `./docs/architecture/adr-<num>-<slug>.md`.
+2. **Ciclo TDD & Escrita de Testes**:
+   - Crie/atualize o arquivo de testes indicado na especificação (ex: `tests/test_[modulo]_[slug].py`).
+   - Garanta a cobertura de 100% dos cenários Gherkin (caminho feliz, validação de regras e tratamento de erros).
+   - Para correção de bugs: escreva primeiro o teste reproduzindo a falha (Red) antes de alterar o código de produção.
+3. **Escrita do Código de Produção**:
+   - Implemente a lógica em `src/` necessária para cumprir cada critério das histórias.
    - Aplique validações, tratamento de exceções e boas práticas de segurança.
-   - O desenvolvimento de testes automatizados e a execução estão delegados temporariamente ao usuário.
+   - **Respeito Estrito às Restrições**: Siga à risca a seção "O que NÃO fazer" da especificação.
+4. **Validação & Execução**:
+   - Execute o comando de teste indicado na especificação (ex: `pytest tests/test_...py -v`).
+   - Garanta que todos os testes passem (`100% green`).
 
 ---
 
-## 3. Entrega e Validação
-
-1. Após concluir a implementação técnica, informe o usuário de que a lógica foi escrita.
-2. Não tente executar testes automatizados localmente.
-3. Exiba um resumo dos arquivos criados/alterados e instrua o usuário a executar os testes e validações no ambiente local dele. Aguarde o retorno.
+## 3. Entrega e Fechamento
+1. Exiba um resumo dos arquivos criados/alterados.
+2. Apresente o resultado dos testes comprovando que todos os critérios foram atendidos (Definition of Done).
