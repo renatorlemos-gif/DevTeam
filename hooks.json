@@ -1,0 +1,11 @@
+{
+  "pull-standards": {
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "powershell -ExecutionPolicy Bypass -File scripts\\pull_standards.ps1",
+        "timeout": 15
+      }
+    ]
+  }
+}

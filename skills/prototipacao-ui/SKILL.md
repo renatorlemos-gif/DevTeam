@@ -1,6 +1,6 @@
 ---
 name: prototipacao-ui
-description: Constrói protótipos visuais interativos em React e Tailwind dentro de docs/prototypes/<slug>/, servindo como especificação executável (living spec) para validação com o usuário e handoff para outros times.
+description: Constrói protótipos visuais interativos em React e Tailwind dentro do diretório de especificações do projeto, servindo como especificação executável (living spec) para validação.
 ---
 
 # Habilidade: Prototipação Rápida de Interface (React UI)
@@ -10,18 +10,19 @@ Esta habilidade é utilizada para converter especificações funcionais e crité
 ---
 
 ## 1. Quando Acionar Esta Habilidade
-- A História de Usuário (`docs/specs/us-*.md`) envolver telas, formulários, tabelas, modais ou navegação web/mobile.
+- A História de Usuário (User Story) envolver telas, formulários, tabelas, modais ou navegação web/mobile.
 - O projeto estiver no modo **Docs-as-Code Exclusivo** e precisar fornecer especificações visuais inequívocas para outro time agêntico ou humano.
 - O usuário solicitar uma validação visual rápida de um fluxo antes de aprovar os requisitos.
 
 ---
 
-## 2. Estrutura do Protótipo em `docs/prototypes/`
+## 2. Estrutura do Protótipo
 
+Consulte o repositório central (`.cache/standards`) para identificar o diretório de destino de protótipos (ex: `docs/prototypes` ou similar).
 Para cada funcionalidade prototipada, crie uma pasta dedicada:
 
 ```text
-docs/prototypes/[slug-da-feature]/
+[diretorio-de-prototipos]/[slug-da-feature]/
 ├── README.md               # Guia de visualização, componentes e estados mapeados
 ├── index.html              # Protótipo standalone executável no navegador (React + Tailwind CDN)
 └── App.jsx                 # Código-fonte React limpo e modular para referência do time dev
@@ -47,6 +48,6 @@ Todo protótipo de tela deve demonstrar de forma interativa ou via alternador:
 
 ## 4. Finalização e Vínculo com a Especificação
 
-1. Salve os arquivos em `./docs/prototypes/<slug-da-feature>/`.
-2. Abra a história em `./docs/specs/us-<slug-da-feature>.md` e preencha a seção **3.1. Protótipo Interativo & Telas** com o caminho relativo.
+1. Salve os arquivos no diretório designado pelo standard.
+2. Abra a história associada ao protótipo e atualize a seção correspondente com o caminho relativo.
 3. Apresente o protótipo ao usuário com o link direto para visualização.

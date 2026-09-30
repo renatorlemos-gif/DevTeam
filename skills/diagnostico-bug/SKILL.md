@@ -20,17 +20,18 @@ Ao receber um relato de erro:
 ---
 
 ## 2. Geração da Especificação do Bug
-1. Utilize o template mestre em `./docs/templates/BUG-template.md`.
-2. Mapeie:
+1. Consulte o repositório central (`.cache/standards`) para identificar o template canônico de especificação de erro/bug e o diretório de destino.
+2. Utilize a ferramenta `view_file` para ler o template correspondente antes da escrita.
+3. Mapeie:
    - Os passos de reprodução passo a passo.
    - O payload JSON isolado causador do erro.
    - O módulo e função provável da causa raiz em `src/`.
-   - As diretrizes de teste de regressão em `tests/test_[modulo]_[slug].py`.
+   - As diretrizes de teste de regressão.
    - As restrições da correção (proibição de `try/except: pass` silencioso ou quebra de contratos públicos).
-3. Salve o arquivo em `./docs/specs/bug-<slug-do-problema>.md`.
+4. Salve o arquivo no diretório designado pelo standard, usando `bug-<slug-do-problema>.md` ou a convenção imposta pela organização.
 
 ---
 
 ## 3. Repasse ao Developer (TDD Red/Green)
 1. Notifique o Orquestrador para acionar o Developer com a referência do arquivo gerado:
-   > *"Especificação de bug gerada em `./docs/specs/bug-<slug>.md`. Developer, execute o ciclo Red/Green: crie o teste de falha primeiro e aplique a correção mínima necessária."*
+   > *"Especificação de bug gerada e estruturada. Developer, consulte a especificação e execute o ciclo Red/Green: crie o teste de falha primeiro e aplique a correção mínima necessária."*

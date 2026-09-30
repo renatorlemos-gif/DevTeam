@@ -18,13 +18,13 @@ Esta habilidade é utilizada para documentar escolhas técnicas de alto impacto 
 ---
 
 ## 2. Procedimento de Registro
-
-1. Localize os ADRs existentes em `./docs/architecture/` para identificar o próximo número sequencial (ex: `001`, `002`).
-2. Utilize o template mestre em `./docs/templates/ADR-template.md`.
-3. Preencha detalhadamente:
+1. Consulte o repositório de standards (`.cache/standards`) para identificar o template de ADR e o diretório de destino.
+2. Localize os ADRs existentes nesse diretório alvo para identificar o próximo número sequencial (ex: `001`, `002`).
+3. Utilize a ferramenta `view_file` para ler o template canônico em `.cache/standards/templates/...` antes da escrita.
+4. Preencha detalhadamente:
    - **Contexto & Problema**: A dor ou necessidade técnica que motivou a decisão.
    - **Decisão**: A solução escolhida de forma explícita.
    - **Matriz de Alternativas**: Tabela comparativa avaliando ao menos 2 opções com Prós, Contras e Motivo do Descarte da opção não selecionada.
    - **Consequências & Impactos**: Trade-offs aceitos e impacto em schemas/tabelas/APIs.
-4. Salve o documento em `./docs/architecture/adr-[num3d]-[slug-da-decisao].md`.
-5. Apresente a decisão ao usuário para homologação (`status: Accepted`).
+5. Salve o documento no diretório designado pelo repositório de standards.
+6. Apresente a decisão ao usuário para homologação (`status: Accepted`).

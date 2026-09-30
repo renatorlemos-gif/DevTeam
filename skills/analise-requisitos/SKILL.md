@@ -29,9 +29,10 @@ Após as primeiras respostas do usuário, explore:
 
 ## 2. Geração e Promoção do PRD
 
-1. Crie o arquivo utilizando a base em `./docs/templates/PRD-template.md`.
-2. Salve em `./docs/product/prd-<nome-da-feature>.md` (ou `./docs/prds/PRD-v0.1-<nome-da-feature>.md` para compatibilidade).
-3. No cabeçalho Frontmatter YAML, defina `version: "0.1.0"` e `status: "Draft"`.
+1. Consulte as diretrizes em `.cache/standards` para identificar o template de PRD canônico e o diretório de destino exigido no projeto.
+2. Utilize a ferramenta `view_file` para ler o template antes de preencher o conteúdo.
+3. Salve o arquivo final no caminho ditado pelo standard, usando estritamente kebab-case sem sufixos de versão no nome do arquivo.
+4. No cabeçalho Frontmatter YAML, defina a versão (ex: `version: "0.1.0"`) e `status: "Draft"`.
 4. Caso o usuário solicite alterações durante a revisão, atualize o histórico de versões e incremente a versão no frontmatter (`0.2.0`, `0.3.0`).
 5. Quando o usuário declarar estar 100% satisfeito com o documento:
    - Altere o Frontmatter para `version: "1.0.0"` e `status: "Approved"`.
