@@ -1,53 +1,62 @@
 ---
 name: prototipacao-ui
-description: Constrói protótipos visuais interativos em React e Tailwind dentro do diretório de especificações do projeto, servindo como especificação executável (living spec) para validação.
+description: Skill do Agente UX / Product Designer. Constrói protótipos visuais interativos em React/HTML e elabora a Jornada do Usuário (USER-JOURNEY.md) como parte da fase Solution Definition.
 ---
 
-# Habilidade: Prototipação Rápida de Interface (React UI)
+# Habilidade: Prototipação UX & Jornada do Usuário
 
-Esta habilidade é utilizada para converter especificações funcionais e critérios de aceitação em **protótipos de interface funcionais e clicáveis**, eliminando qualquer ambiguidade de layout, estados de componentes ou fluxos de UX antes do desenvolvimento final.
+Esta habilidade é utilizada pelo **UX / Product Designer** para converter o PRD (em status `Draft`) em artefatos de experiência do usuário: **protótipos de interface funcionais e clicáveis** e a **jornada do usuário** (USER-JOURNEY.md).
 
----
-
-## 1. Quando Acionar Esta Habilidade
-- A História de Usuário (User Story) envolver telas, formulários, tabelas, modais ou navegação web/mobile.
-- O projeto estiver no modo **Docs-as-Code Exclusivo** e precisar fornecer especificações visuais inequívocas para outro time agêntico ou humano.
-- O usuário solicitar uma validação visual rápida de um fluxo antes de aprovar os requisitos.
+> **Pré-requisito:** Esta skill é acionada na **Triagem Macro (PRD Draft)** ou na **Triagem Granular (Micro-Triage de Feature)**.
+> **🛑 REGRA ANTI-BATCHING (Gate 1 e 2):** Na etapa de Triagem Granular, você deve atuar EXCLUSIVAMENTE sobre a ÚNICA Feature selecionada pelo humano (Gate 1), criando protótipos de tela apenas para o escopo estrito desta Feature específica. É proibido prototipar múltiplas Features em lote.
 
 ---
 
-## 2. Estrutura do Protótipo
+## 1. Bootstrap Obrigatório (Primeiro Passo)
+1. Leia o arquivo `.cache\standards\AGENT_BOOTSTRAP.md` com a ferramenta `view_file`.
+2. Localize no mapa de recursos:
+   - O template `USER-JOURNEY.md` (em `templates/ux/`).
+   - Os diretórios de destino para protótipos e jornadas UX no projeto real.
+3. Leia o template com `view_file` antes de gerar qualquer artefato.
 
-Consulte o repositório central (`.cache/standards`) para identificar o diretório de destino de protótipos (ex: `docs/prototypes` ou similar).
-Para cada funcionalidade prototipada, crie uma pasta dedicada:
+---
+
+## 2. Elaboração da Jornada do Usuário
+
+1. Leia o PRD `Draft` para compreender personas, dores e fluxos de interação.
+2. Utilize o template `USER-JOURNEY.md` encontrado no Bootstrap.
+3. Mapeie todas as etapas da jornada: Descoberta → Engajamento → Conversão → Retenção (ou conforme o template exigir).
+4. Salve o documento no diretório de UX designado pelo standard no projeto real.
+
+---
+
+## 3. Construção do Protótipo Funcional
+
+Para cada funcionalidade prototipada, crie uma pasta dedicada no diretório de protótipos designado pelo standard:
 
 ```text
 [diretorio-de-prototipos]/[slug-da-feature]/
 ├── README.md               # Guia de visualização, componentes e estados mapeados
 ├── index.html              # Protótipo standalone executável no navegador (React + Tailwind CDN)
-└── App.jsx                 # Código-fonte React limpo e modular para referência do time dev
+└── App.jsx                 # Código-fonte React limpo e modular para referência do Developer
 ```
-
----
-
-## 3. Padrão de Construção do Protótipo
 
 ### A. Zero Setup (Execução Imediata)
 Prefira gerar o protótipo como um arquivo **`index.html` standalone** utilizando React 18 e Tailwind CSS via CDN:
 * Não exige `npm install`, nem bundler, nem servidor rodando no repositório.
-* O usuário ou o outro time agêntico só precisa abrir o arquivo diretamente no navegador para testar interações reais (cliques, tabs, validações de formulário, abertura de modais).
+* O usuário só precisa abrir o arquivo diretamente no navegador para testar interações reais.
 
 ### B. Cobertura Obrigatória de Estados de Tela
 Todo protótipo de tela deve demonstrar de forma interativa ou via alternador:
-1. **Estado Padrão / Vazio:** A tela inicial antes da entrada de dados (com empty state/placeholder visual).
-2. **Estado Carregando (Loading):** Skeletons, spinners ou desabilitação de botões de submit.
-3. **Estado de Validação / Erro:** Destaque de inputs com erro e alertas visuais de falha.
+1. **Estado Padrão / Vazio:** A tela inicial antes da entrada de dados.
+2. **Estado Carregando (Loading):** Skeletons, spinners ou desabilitação de botões.
+3. **Estado de Validação / Erro:** Destaque de inputs com erro e alertas visuais.
 4. **Estado de Sucesso:** Mensagem de confirmação ou transição para a próxima etapa.
 
 ---
 
-## 4. Finalização e Vínculo com a Especificação
+## 4. Finalização e Vínculo
 
-1. Salve os arquivos no diretório designado pelo standard.
-2. Abra a história associada ao protótipo e atualize a seção correspondente com o caminho relativo.
-3. Apresente o protótipo ao usuário com o link direto para visualização.
+1. Salve todos os artefatos nos diretórios designados pelo standard.
+2. Apresente os protótipos e a jornada ao usuário com links diretos para visualização.
+3. Aguarde a aprovação humana antes que o PRD avance para `Approved`.

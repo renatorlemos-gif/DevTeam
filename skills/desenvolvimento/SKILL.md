@@ -19,7 +19,7 @@ Esta habilidade é utilizada pelo **Developer** para converter User Stories apro
 
 ## 2. Verificação de Entrada
 
-1. **Validação de Feature**: Antes de iniciar o código, valide se a User Story pertence a uma Feature Aprovada. O Developer foca estritamente na entrega "Feature a Feature", nunca misturando US de Features diferentes simultaneamente.
+1. **Validação de Feature e Gate 3**: Antes de iniciar o código, valide se a User Story pertence a uma Feature Aprovada **E se as próprias User Stories receberam aprovação humana explícita no Gate 3 (Ready for Development Gate)**. Caso não tenham passado pelo Gate 3, **aborte a execução** e solicite ao Orquestrador que colete a aprovação humana. O Developer foca estritamente na entrega "Feature a Feature", nunca misturando US de Features diferentes simultaneamente.
 2. Leia a User Story atribuída e identifique:
    - Critérios de aceitação BDD (cenários Gherkin).
    - Restrições explícitas ("O que NÃO fazer").

@@ -24,13 +24,16 @@ Esta habilidade é utilizada pelo **Product Owner** para decompor a especificaç
 
 ---
 
-## 3. Elaboração de Features e Histórias de Usuário
+## 3. Elaboração de Features e Histórias de Usuário (Cadência com STOPS)
 
-O Product Owner NÃO deve ir direto para a criação de US. Ele deve:
+O Product Owner NÃO deve ir direto para a criação de US nem atuar em lote. Ele deve:
 1. **Consumir** o PRD e os artefatos macro (Solution Definition).
-2. **Redigir as Feature Definitions** (FEAT-XXX), declarando escopo, prioridade e listando as US previstas.
-3. **Submeter cada Feature à triagem granular** (Micro-Triage) do Tech Lead (para contratos de API específicos) e UX Designer (para protótipos de tela específicos daquela Feature).
-4. **Somente após a Feature ser aprovada**, ele deve desdobrar as User Stories e os Critérios de Aceitação BDD, garantindo rastreabilidade com a Feature.
+2. **Redigir os Drafts de TODAS as Feature Definitions** (FEAT-XXX) daquele PRD, declarando escopo e prioridade.
+   * **🛑 PARADA (Gate 1 - Prioritization)**: O Orquestrador pedirá ao humano para escolher **APENAS UMA Feature**.
+3. **Aguardar a Triagem Granular e Aprovação**: O PO aguarda enquanto UX e Arquitetura refinam a Feature Única escolhida e o Orquestrador coleta o "OK" humano.
+   * **🛑 PARADA (Gate 2 - Feature Approval)**: O Orquestrador pede aprovação humana da Feature.
+4. **Desdobrar as User Stories**: SOMENTE após aprovação no Gate 2, o PO desdobra as User Stories (US) e Critérios de Aceitação BDD **exclusivamente daquela Feature**.
+   * **🛑 PARADA (Gate 3 - US Approval)**: O Orquestrador pede aprovação humana das User Stories criadas. Somente após isso o Developer será acionado.
 
 Para cada história desdobrada da Feature aprovada, formule obrigatoriamente:
    - **Narrativa Ágil**: Como [persona] / Quero [ação] / Para que [benefício].

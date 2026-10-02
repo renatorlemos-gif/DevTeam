@@ -57,24 +57,31 @@ graph TD
     BOTH --> HUMAN_REVIEW
     HUMAN_REVIEW --> APPROVE
 
-    APPROVE --> PO_FEAT["Passo 4: Product Owner<br/>Gera Feature Definitions"]
+    APPROVE --> PO_FEAT["Passo 4: Product Owner<br/>Gera Draft de Features"]
+
+    PO_FEAT --> GATE1{"🛑 GATE 1: Humano<br/>escolhe UMA Feature"}
     
-    PO_FEAT --> MicroTriage{"Passo 4.5: Orquestrador<br/>Lê Micro-Triage da Feature"}
+    GATE1 --> MicroTriage{"Passo 4.5: Orquestrador<br/>Lê Micro-Triage da Feature"}
     MicroTriage -->|"Exige Refinamento UX"| UX_Feat["Agente UX Designer<br/>Prototipa a Tela da Feature"]
     MicroTriage -->|"Exige Refinamento Tech"| ARCH_Feat["Agente Tech Lead<br/>Modela Contratos da Feature"]
-    MicroTriage -->|"Nenhum"| FEAT_APPROVE["Feature → Approved"]
+    MicroTriage -->|"Nenhum"| GATE2{"🛑 GATE 2: Humano<br/>aprova a Feature"}
     
-    UX_Feat --> FEAT_APPROVE
-    ARCH_Feat --> FEAT_APPROVE
+    UX_Feat --> GATE2
+    ARCH_Feat --> GATE2
 
-    FEAT_APPROVE --> PO_US["Passo 4.8: Product Owner<br/>Desdobra em User Stories BDD"]
+    GATE2 --> PO_US["Passo 4.8: Product Owner<br/>Desdobra US da Feature Aprovada"]
     
-    PO_US --> READY["Status → Ready for Development"]
+    PO_US --> GATE3{"🛑 GATE 3: Humano<br/>aprova as US"}
+    
+    GATE3 --> READY["Status → Ready for Development"]
 
     READY --> DEV{"Passo 5: Modo?"}
 
     DEV -->|"Docs-as-Code"| HANDOFF([Handoff para Times Externos])
     DEV -->|"Ciclo Completo"| DEVELOPER["Developer<br/>Código TDD em src/ + tests/"]
+    
+    DEVELOPER --> LOOP_FEATURE{"Retorna ao GATE 1<br/>para próxima Feature"}
+    LOOP_FEATURE -.-> GATE1
 ```
 
 ### Passo 1 — Análise de Requisitos (AR)
@@ -90,20 +97,28 @@ O Orquestrador lê a seção de Triagem do PRD `Draft` e decide quais agentes de
 ### Passo 3 — Aprovação Humana do Solution Definition
 O Orquestrador apresenta os artefatos gerados (Protótipos UX, Jornada do Usuário, ADRs) ao usuário humano para validação. Após aprovação, o status do PRD muda para `Approved`.
 
-### Passo 4 — Refinamento (PO)
-O Product Owner lê o PRD `Approved` **e todos os artefatos de Solution Definition vinculados** (ADRs, Protótipos, Jornada UX). Ele elabora as Feature Definitions (FEAT-XXX), declarando escopo, prioridade e listando as US previstas. Ele deve preencher a seção "Avaliação de Impacto (Micro-Triage)" em cada Feature.
+### Passo 4 — Abertura de Features (Draft)
+O Product Owner lê o PRD `Approved` e todos os artefatos de Solution Definition vinculados. Ele elabora os rascunhos (drafts) de **todas as Feature Definitions** (FEAT-XXX) listando escopo e prioridade.
 
-### Passo 4.5 — Micro-Triagem (Dual-Track Agile)
-Após o Agente PO redigir uma Feature, você (o Orquestrador) **DEVE** ler a seção "Avaliação de Impacto (Micro-Triage)" da referida Feature.
-* Se o PO marcar que a Feature requer refinamento visual, você deve invocar o **Agente UX** para prototipar/refinar aquela tela específica.
-* Se marcar que requer decisão técnica pontual, invoque o **Agente Arquiteto** para definir o contrato/modelagem daquela Feature.
-Somente após esses refinamentos pontuais a Feature ganha o status de `Approved`.
+### 🛑 PARADA 1 (Feature Prioritization Gate)
+O Orquestrador **DEVE PARAR A EXECUÇÃO E CHAMAR O HUMANO**. O humano avaliará a lista de Features e escolherá **APENAS UMA** para seguir em frente. Processamento em lote é terminantemente proibido.
+
+### Passo 4.5 — Micro-Triagem (Exclusivo da Feature Selecionada)
+Após a escolha no Gate 1, o Orquestrador invoca os especialistas para atuar **exclusivamente** naquela Feature:
+* Se o PO marcar que a Feature requer refinamento visual, invoque o **Agente UX**.
+* Se marcar que requer decisão técnica pontual, invoque o **Agente Arquiteto**.
+
+### 🛑 PARADA 2 (Feature Definition Approval Gate)
+O Orquestrador **DEVE PARAR A EXECUÇÃO E CHAMAR O HUMANO**. O humano avaliará os protótipos e contratos gerados especificamente para aquela Feature. Apenas com aprovação humana a Feature ganha status `Approved`.
 
 ### Passo 4.8 — Desdobramento em User Stories
-Somente com a Feature `Approved` (Feature Definition Approval Gate), o Product Owner desdobra as User Stories (US) e critérios de aceitação BDD, garantindo rastreabilidade com a Feature. A User Story ganha o status de `Ready for Development`.
+Com a Feature aprovada no Gate 2, o Product Owner desdobra as User Stories (US) e critérios de aceitação BDD **SOMENTE daquela Feature aprovada**.
+
+### 🛑 PARADA 3 (Ready for Development Gate - US Approval)
+Antes do código, o Orquestrador **DEVE PARAR A EXECUÇÃO E CHAMAR O HUMANO**. O humano avaliará e aprovará as User Stories propostas para esta Feature. Após aprovação, elas ganham status `Ready for Development`.
 
 ### Passo 5 — Engenharia (Developer) *— Apenas no Modo Ciclo Completo*
-O Developer recebe apenas histórias com status `Ready for Development` que pertençam a uma Feature Aprovada. Ele lê as User Stories e os protótipos/contratos gerados. Copia os componentes visuais dos protótipos para o código de produção em `src/` e implementa seguindo TDD. **O Developer NÃO projeta telas nem toma decisões arquiteturais** — ele consome o que já foi definido pelos especialistas.
+Com o "OK" no Gate 3, o Developer inicia o código **daquela Feature**. Ele lê as User Stories e os protótipos/contratos gerados, e implementa seguindo TDD. **Terminado o código e os testes, o time volta ao GATE 1 para puxar a próxima Feature.** O Developer NÃO projeta telas nem toma decisões arquiteturais.
 
 ---
 
@@ -165,19 +180,30 @@ O Developer recebe apenas histórias com status `Ready for Development` que pert
         ▼ (Aprovação Humana → PRD muda para Approved)
  [Product Owner] ◄── Lê PRD Approved + ADRs + Protótipos + Jornada UX
         │
-        ▼ (Gera Feature com Micro-Triage)
+        ▼ (Gera lista de Draft Features)
+  [🛑 GATE 1: Humano escolhe UMA Feature]
+        │
+        ▼ (Refinamento da Feature Única)
 [Orquestrador lê Micro-Triage da Feature]
         │
         ├── Refinamento UX? ──► [UX / Product Designer] → Prototipa a tela
         ├── Refinamento Tech? ─► [Tech Lead / Architect] → Contratos/ADR
         │
+        ▼ 
+  [🛑 GATE 2: Humano aprova a Feature]
+        │
         ▼ (Feature ganha status: Approved)
- [Product Owner] ──► Desdobra em User Stories BDD
+ [Product Owner] ──► Desdobra em User Stories BDD (Somente dessa Feature)
+        │
+        ▼ 
+  [🛑 GATE 3: Humano aprova as US]
         │
         ▼ (US ganha status: Ready for Development)
         ├── Se Modo Docs-as-Code Exclusivo ──► [Handoff: Pacote docs/ para Times Externos]
         │
-        └── Se Modo Ciclo Completo ──────────► [Developer: Código TDD em src/ e tests/]
+        └── Se Modo Ciclo Completo ──────────► [Developer: Código TDD em src/ e tests/ daquela Feature]
+                                                 │
+                                                 └──► (Retorna ao GATE 1)
 ```
 
 ---

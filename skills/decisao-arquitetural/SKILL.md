@@ -1,15 +1,25 @@
 ---
 name: decisao-arquitetural
-description: Registra Decisões de Arquitetura de Software (ADR) avaliando alternativas, prós, contras e trade-offs técnicos.
+description: Skill do Agente Tech Lead / Architect. Registra Decisões de Arquitetura de Software (ADR) avaliando alternativas, prós, contras e trade-offs técnicos, como parte da fase Solution Definition.
 ---
 
 # Habilidade: Registro de Decisão Arquitetural (ADR)
 
-Esta habilidade é utilizada para documentar escolhas técnicas de alto impacto (adoção de novos bancos, frameworks, padrões de design ou mudanças em contratos de dados), prevenindo decisões não registradas no projeto.
+Esta habilidade é utilizada pelo **Tech Lead / Architect** para documentar escolhas técnicas de alto impacto (adoção de novos bancos, frameworks, padrões de design ou mudanças em contratos de dados), prevenindo decisões não registradas no projeto.
+
+> **Pré-requisito:** Esta skill é acionada na **Triagem Macro (PRD Draft)** ou na **Triagem Granular (Micro-Triage de Feature)**.
+> **🛑 REGRA ANTI-BATCHING (Gate 1 e 2):** Na etapa de Triagem Granular, você deve atuar EXCLUSIVAMENTE sobre a ÚNICA Feature selecionada pelo humano (Gate 1), criando contratos de API e modelos de dados apenas para o escopo estrito desta Feature específica. É proibido detalhar múltiplas Features em lote.
 
 ---
 
-## 1. Quando Disparar Esta Habilidade
+## 1. Bootstrap Obrigatório (Primeiro Passo)
+1. Leia o arquivo `.cache\standards\AGENT_BOOTSTRAP.md` com a ferramenta `view_file`.
+2. Localize no mapa de recursos o template `ADR.md` (em `templates/architecture/`) e o diretório de destino.
+3. Leia o template com `view_file` antes de gerar qualquer artefato.
+
+---
+
+## 2. Quando Disparar Esta Habilidade
 - Escolha entre duas ou mais bibliotecas / frameworks (ex: FastAPI vs Django, Pydantic vs Marshmallow).
 - Escolha de motor de persistência / storage (ex: PostgreSQL vs MongoDB, Redis vs Memcached).
 - Mudanças estruturais na organização de pastas ou comunicação entre serviços.
@@ -17,14 +27,13 @@ Esta habilidade é utilizada para documentar escolhas técnicas de alto impacto 
 
 ---
 
-## 2. Procedimento de Registro
-1. Consulte o repositório de standards (`.cache/standards`) para identificar o template de ADR e o diretório de destino.
-2. Localize os ADRs existentes nesse diretório alvo para identificar o próximo número sequencial (ex: `001`, `002`).
-3. Utilize a ferramenta `view_file` para ler o template canônico em `.cache/standards/templates/...` antes da escrita.
-4. Preencha detalhadamente:
+## 3. Procedimento de Registro
+1. Leia o PRD `Draft` para compreender os requisitos técnicos e restrições.
+2. Localize os ADRs existentes no diretório alvo para identificar o próximo número sequencial (ex: `001`, `002`).
+3. Preencha detalhadamente:
    - **Contexto & Problema**: A dor ou necessidade técnica que motivou a decisão.
    - **Decisão**: A solução escolhida de forma explícita.
    - **Matriz de Alternativas**: Tabela comparativa avaliando ao menos 2 opções com Prós, Contras e Motivo do Descarte da opção não selecionada.
    - **Consequências & Impactos**: Trade-offs aceitos e impacto em schemas/tabelas/APIs.
-5. Salve o documento no diretório designado pelo repositório de standards.
-6. Apresente a decisão ao usuário para homologação (`status: Accepted`).
+4. Salve o documento no diretório designado pelo repositório de standards.
+5. Apresente a decisão ao usuário para homologação (`status: Accepted`).
