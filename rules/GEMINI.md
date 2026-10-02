@@ -52,7 +52,7 @@ graph TD
     Triage -->|"Ambos"| BOTH["UX Designer + Tech Lead<br/>em paralelo"]
     Triage -->|"Nenhum"| APPROVE["PRD → Approved"]
 
-    UX --> HUMAN_REVIEW{"Passo 3: Aprovação Humana<br/>dos Artefatos de Solution"}
+    UX --> HUMAN_REVIEW{"🛑 GATE 0.5: Humano<br/>aprova PRD e Solution Macro"}
     ARCH --> HUMAN_REVIEW
     BOTH --> HUMAN_REVIEW
     HUMAN_REVIEW --> APPROVE
@@ -85,17 +85,17 @@ graph TD
 ```
 
 ### Passo 1 — Análise de Requisitos (AR)
-O Analista de Requisitos conduz rodadas investigativas com o usuário e gera o PRD. **OBRIGATÓRIO:** O AR deve preencher os checkboxes de Triagem/Impacto (Triage) no final do PRD conforme exigido pelo template em `.cache/standards`. O PRD é salvo com status `Draft`.
+O Analista de Requisitos conduz rodadas investigativas com o usuário e gera o PRD. **OBRIGATÓRIO:** O AR deve preencher os checkboxes de Avaliação de Impacto Macro (Macro-Triage) no final do PRD conforme exigido pelo template. O PRD é salvo com status `Draft`.
 
-### Passo 2 — Triagem pelo Orquestrador (Solution Definition Gate)
-O Orquestrador lê a seção de Triagem do PRD `Draft` e decide quais agentes de solução acionar:
-* Se a Triagem indicar **impacto em UX** → Invoca o **Agente UX / Product Designer**.
-* Se a Triagem indicar **impacto em Arquitetura** → Invoca o **Agente Tech Lead / Architect**.
-* Se ambos → Invoca os dois (podem rodar em paralelo).
-* Se nenhum → O PRD avança diretamente para `Approved`.
+### Passo 2 — Triagem Macro pelo Orquestrador (Solution Definition)
+O Orquestrador lê a seção de Macro-Triage do PRD `Draft` e decide quais agentes de solução acionar em nível sistêmico:
+* Se indicar **impacto em UX** → Invoca o **Agente UX** para Jornada Geral.
+* Se indicar **impacto em Arquitetura** → Invoca o **Agente Tech Lead** para ADR Sistêmico.
+* Se ambos → Invoca os dois.
+* Se nenhum → O PRD avança para o Gate 0.5.
 
-### Passo 3 — Aprovação Humana do Solution Definition
-O Orquestrador apresenta os artefatos gerados (Protótipos UX, Jornada do Usuário, ADRs) ao usuário humano para validação. Após aprovação, o status do PRD muda para `Approved`.
+### 🛑 PARADA (Gate 0.5 - Solution Definition Approval)
+O Orquestrador **DEVE PARAR A EXECUÇÃO E CHAMAR O HUMANO**. O Orquestrador apresenta os artefatos gerados (PRD, Protótipos/Jornada Macro, ADRs) ao usuário humano para validação. Após aprovação, o status do PRD muda para `Approved`.
 
 ### Passo 4 — Abertura de Features (Draft)
 O Product Owner lê o PRD `Approved` e todos os artefatos de Solution Definition vinculados. Ele elabora os rascunhos (drafts) de **todas as Feature Definitions** (FEAT-XXX) listando escopo e prioridade.
@@ -177,7 +177,10 @@ Com o "OK" no Gate 3, o Developer inicia o código **daquela Feature**. Ele lê 
         ├── UX Impact? ──► [UX / Product Designer] → Jornada + Protótipos
         ├── Arch Impact? ─► [Tech Lead / Architect] → ADR
         │
-        ▼ (Aprovação Humana → PRD muda para Approved)
+        ▼ 
+  [🛑 GATE 0.5: Humano aprova PRD e Solution Macro]
+        │
+        ▼ (PRD muda para Approved)
  [Product Owner] ◄── Lê PRD Approved + ADRs + Protótipos + Jornada UX
         │
         ▼ (Gera lista de Draft Features)

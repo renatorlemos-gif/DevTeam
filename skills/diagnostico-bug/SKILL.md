@@ -9,7 +9,13 @@ Esta habilidade é utilizada quando uma falha, exceção ou comportamento anôma
 
 ---
 
-## 1. Coleta e Triagem do Erro
+## 1. Bootstrap Obrigatório (Primeiro Passo)
+1. Leia o arquivo `.cache\standards\AGENT_BOOTSTRAP.md` com a ferramenta `view_file`.
+2. Localize o template e o diretório de destino de especificações de bug.
+
+---
+
+## 2. Coleta e Triagem do Erro
 Ao receber um relato de erro:
 1. Obtenha do usuário ou dos logs:
    - Comportamento atual observado vs Comportamento esperado.
@@ -19,7 +25,7 @@ Ao receber um relato de erro:
 
 ---
 
-## 2. Geração da Especificação do Bug
+## 3. Geração da Especificação do Bug
 1. Consulte o repositório central (`.cache/standards`) para identificar o template canônico de especificação de erro/bug e o diretório de destino.
 2. Utilize a ferramenta `view_file` para ler o template correspondente antes da escrita.
 3. Mapeie:
@@ -32,6 +38,6 @@ Ao receber um relato de erro:
 
 ---
 
-## 3. Repasse ao Developer (TDD Red/Green)
+## 4. Repasse ao Developer (TDD Red/Green)
 1. Notifique o Orquestrador para acionar o Developer com a referência do arquivo gerado:
    > *"Especificação de bug gerada e estruturada. Developer, consulte a especificação e execute o ciclo Red/Green: crie o teste de falha primeiro e aplique a correção mínima necessária."*
