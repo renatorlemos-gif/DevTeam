@@ -78,7 +78,7 @@ graph TD
     READY --> DEV{"Passo 5: Modo?"}
 
     DEV -->|"Docs-as-Code"| HANDOFF([Handoff para Times Externos])
-    DEV -->|"Ciclo Completo"| DEVELOPER["Developer<br/>Código TDD em src/ + tests/"]
+    DEV -->|"Ciclo Completo"| DEVELOPER["⚡ Múltiplos Developers<br/>Implementação Paralela (TDD)"]
     
     DEVELOPER --> LOOP_FEATURE{"Retorna ao GATE 1<br/>para próxima Feature"}
     LOOP_FEATURE -.-> GATE1
@@ -117,8 +117,8 @@ Com a Feature aprovada no Gate 2, o Product Owner desdobra as User Stories (US) 
 ### 🛑 PARADA 3 (Ready for Development Gate - US Approval)
 Antes do código, o Orquestrador **DEVE PARAR A EXECUÇÃO E CHAMAR O HUMANO**. O humano avaliará e aprovará as User Stories propostas para esta Feature. Após aprovação, elas ganham status `Ready for Development`.
 
-### Passo 5 — Engenharia (Developer) *— Apenas no Modo Ciclo Completo*
-Com o "OK" no Gate 3, o Developer inicia o código **daquela Feature**. Ele lê as User Stories e os protótipos/contratos gerados, e implementa seguindo TDD. **Terminado o código e os testes, o time volta ao GATE 1 para puxar a próxima Feature.** O Developer NÃO projeta telas nem toma decisões arquiteturais.
+### Passo 5 — ⚡ Implementação Paralela (Aceleração) *— Apenas no Modo Ciclo Completo*
+Com o "OK" no Gate 3, você (Orquestrador) está **autorizado e encorajado a acionar múltiplos subagentes de Desenvolvimento (Developer) em paralelo**. Como as US pertencem à mesma Feature aprovada, o paralelismo na codificação é desejado para acelerar a entrega! Os Developers iniciam o código lendo as User Stories e protótipos/contratos, implementando com TDD. **Terminado o código e validada a Feature inteira, o time volta ao GATE 1 para puxar a próxima Feature.** O Developer NÃO projeta telas nem toma decisões arquiteturais.
 
 ---
 
@@ -204,9 +204,9 @@ Com o "OK" no Gate 3, o Developer inicia o código **daquela Feature**. Ele lê 
         ▼ (US ganha status: Ready for Development)
         ├── Se Modo Docs-as-Code Exclusivo ──► [Handoff: Pacote docs/ para Times Externos]
         │
-        └── Se Modo Ciclo Completo ──────────► [Developer: Código TDD em src/ e tests/ daquela Feature]
+        └── Se Modo Ciclo Completo ──────────► [⚡ Múltiplos Developers: Código TDD Paralelo em src/ e tests/]
                                                  │
-                                                 └──► (Retorna ao GATE 1)
+                                                 └──► (Valida Feature e Retorna ao GATE 1)
 ```
 
 ---

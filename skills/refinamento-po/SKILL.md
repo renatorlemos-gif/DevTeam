@@ -28,8 +28,8 @@ Esta habilidade é utilizada pelo **Product Owner** para decompor a especificaç
 
 O Product Owner NÃO deve ir direto para a criação de US nem atuar em lote. Ele deve:
 1. **Consumir** o PRD e os artefatos macro (Solution Definition).
-2. **Redigir os Drafts de TODAS as Feature Definitions** (FEAT-XXX) daquele PRD, declarando escopo e prioridade.
-   * **Avaliação de Impacto:** Para cada Feature, o PO DEVE preencher a seção de "Micro-Triagem", indicando explicitamente se haverá necessidade de refinamento de UX (telas) ou Arquitetura (contratos).
+2. **Redigir os Drafts de TODAS as Feature Definitions** (FEAT-XXX) daquele PRD, usando estritamente o template `FEATURE-DEFINITION.md` recém-baixado do repositório central.
+   * **Avaliação de Impacto (Checkboxes Literais):** Para cada Feature, o PO DEVE preencher a seção de "Micro-Triagem" preservando e marcando com `[x]` os checkboxes literais do template, indicando explicitamente se haverá necessidade de refinamento de UX (telas) ou Arquitetura (contratos). O Orquestrador precisa desses checkboxes literais como gatilhos!
    * **🛑 PARADA (Gate 1 - Prioritization)**: O Orquestrador pedirá ao humano para escolher **APENAS UMA Feature**.
 3. **Aguardar a Triagem Granular e Aprovação**: O PO aguarda enquanto UX e Arquitetura refinam a Feature Única escolhida e o Orquestrador coleta o "OK" humano.
    * **🛑 PARADA (Gate 2 - Feature Approval)**: O Orquestrador pede aprovação humana da Feature.

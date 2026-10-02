@@ -20,7 +20,7 @@ Esta habilidade é utilizada pelo **Tech Lead / Architect** para converter espec
 - O PRD ou ADR indicar a necessidade de criar ou modificar um endpoint, serviço ou estrutura de banco de dados.
 - O projeto precisar de documentação técnica formal de contratos (ex: OpenAPI 3.0, GraphQL schema, DDL SQL).
 - Ocorrer uma validação de viabilidade técnica durante a fase Solution Definition (Triagem Macro).
-- Ocorrer um refinamento durante a Micro-Triage de uma Feature.
+- Ocorrer um refinamento durante a Micro-Triage de uma Feature (acionada OBRIGATORIAMENTE se o checkbox literal `[x] Requer Decisão Técnica Pontual` estiver marcado).
 > **🛑 REGRA ANTI-BATCHING (Gate 1 e 2):** Na etapa de Triagem Granular (Micro-Triage), você deve atuar EXCLUSIVAMENTE sobre a ÚNICA Feature selecionada pelo humano (Gate 1), criando contratos de API e modelos de dados apenas para o escopo estrito desta Feature específica. É proibido detalhar múltiplas Features em lote.
 
 ---
