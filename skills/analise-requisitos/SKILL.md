@@ -10,9 +10,9 @@ Esta habilidade é utilizada para extrair, esclarecer e documentar detalhadament
 ---
 
 ## 1. Bootstrap Obrigatório (Primeiro Passo)
-1. Leia o arquivo `.cache\standards\AGENT_BOOTSTRAP.md` com a ferramenta `view_file`.
-2. Localize no mapa de recursos o template `PRD.md` (em `templates/product/`) e o diretório de destino.
-3. Leia o template com `view_file` antes de iniciar a redação.
+1. Leia a governança do projeto alvo acessando o arquivo `AGENTS.md` (ou `AI_GOVERNANCE.md`) na raiz do repositório.
+2. Localize no manifesto do projeto qual é o template correspondente a Requisitos (ex: PRD) e o seu diretório de destino.
+3. Leia o template designado pelo projeto antes de iniciar a redação.
 
 ---
 
@@ -36,11 +36,11 @@ Após as primeiras respostas do usuário, explore:
 
 ## 3. Geração do PRD com Macro-Triagem
 
-1. Preencha o PRD seguindo rigorosamente a estrutura do template lido no Bootstrap.
-2. **OBRIGATÓRIO — Triagem de Impacto Macro (Macro-Triage):** Ao final do PRD, preencha os checkboxes de avaliação de impacto macro. Estes checkboxes determinam se a demanda como um todo requer:
+1. Preencha o documento de requisitos seguindo rigorosamente a estrutura do template fornecido pelo projeto.
+2. **OBRIGATÓRIO — Triagem de Impacto Macro (Macro-Triage):** Ao final do documento, preencha a avaliação de impacto macro (ou adicione-a se o template não a tiver, se adaptando ao formato). Estes indicam se a demanda como um todo requer:
    - **Impacto em UX** (Jornada Macro).
    - **Impacto em Arquitetura** (ADR sistêmico).
-3. Salve o arquivo no caminho ditado pelo standard, usando estritamente kebab-case sem sufixos de versão no nome.
+3. Salve o arquivo no caminho ditado pelo manifesto do projeto, usando a convenção de nomenclatura estipulada lá.
 4. No cabeçalho Frontmatter YAML, defina `version: "0.1.0"` e `status: "Draft"`.
 5. Caso o usuário solicite alterações durante a revisão, atualize o histórico de versões e incremente a versão no frontmatter (`0.2.0`, `0.3.0`).
 

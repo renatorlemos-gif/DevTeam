@@ -10,8 +10,8 @@ Esta habilidade é utilizada quando uma falha, exceção ou comportamento anôma
 ---
 
 ## 1. Bootstrap Obrigatório (Primeiro Passo)
-1. Leia o arquivo `.cache\standards\AGENT_BOOTSTRAP.md` com a ferramenta `view_file`.
-2. Localize o template e o diretório de destino de especificações de bug.
+1. Leia a governança do projeto alvo acessando o arquivo `AGENTS.md` (ou `AI_GOVERNANCE.md`) na raiz do repositório.
+2. Localize no manifesto do projeto o template e o diretório de destino de especificações de bug.
 
 ---
 
@@ -26,7 +26,7 @@ Ao receber um relato de erro:
 ---
 
 ## 3. Geração da Especificação do Bug
-1. Consulte o repositório central (`.cache/standards`) para identificar o template canônico de especificação de erro/bug e o diretório de destino.
+1. Consulte a governança do projeto para identificar o template canônico de especificação de erro/bug e o diretório de destino.
 2. Utilize a ferramenta `view_file` para ler o template correspondente antes da escrita.
 3. Mapeie:
    - Os passos de reprodução passo a passo.
@@ -34,7 +34,7 @@ Ao receber um relato de erro:
    - O módulo e função provável da causa raiz em `src/`.
    - As diretrizes de teste de regressão.
    - As restrições da correção (proibição de `try/except: pass` silencioso ou quebra de contratos públicos).
-4. Salve o arquivo no diretório designado pelo standard, usando `bug-<slug-do-problema>.md` ou a convenção imposta pela organização.
+4. Salve o arquivo no diretório designado pelo manifesto do projeto, usando `bug-<slug-do-problema>.md` ou a convenção imposta pelo projeto.
 
 ---
 

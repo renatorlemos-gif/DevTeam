@@ -12,8 +12,8 @@ Esta habilidade é utilizada pelo **Developer** para converter User Stories apro
 ---
 
 ## 1. Bootstrap Obrigatório (Primeiro Passo)
-1. Leia o arquivo `.cache\standards\AGENT_BOOTSTRAP.md` com a ferramenta `view_file`.
-2. Valide que a User Story atende à **Definition of Ready** (leia `governance/definition-of-ready.md`).
+1. Leia a governança do projeto alvo acessando o arquivo `AGENTS.md` (ou `AI_GOVERNANCE.md`) na raiz do repositório.
+2. Valide que a User Story atende à **Definition of Ready** estipulada pela governança do projeto.
 
 ---
 
@@ -39,7 +39,7 @@ Esta habilidade é utilizada pelo **Developer** para converter User Stories apro
 2. **Escrita do Código de Produção**:
    - Implemente a lógica necessária para cumprir cada critério das histórias.
    - Copie os componentes visuais dos protótipos React gerados pelo UX Designer para `src/`.
-   - Aplique validações, tratamento de exceções e boas práticas de segurança ditadas pelo `.cache/standards`.
+   - Aplique validações, tratamento de exceções e boas práticas de segurança ditadas pelo manifesto do projeto.
    - **Respeito Estrito às Restrições**: Siga à risca a seção "O que NÃO fazer" da especificação.
 3. **Validação & Execução**:
    - Execute o comando de teste indicado na especificação.

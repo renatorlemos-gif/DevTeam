@@ -13,26 +13,26 @@ Esta habilidade é utilizada pelo **UX / Product Designer** para converter o PRD
 ---
 
 ## 1. Bootstrap Obrigatório (Primeiro Passo)
-1. Leia o arquivo `.cache\standards\AGENT_BOOTSTRAP.md` com a ferramenta `view_file`.
-2. Localize no mapa de recursos:
-   - O template `USER-JOURNEY.md` (em `templates/ux/`).
+1. Leia a governança do projeto alvo acessando o arquivo `AGENTS.md` (ou `AI_GOVERNANCE.md`) na raiz do repositório.
+2. Localize no manifesto do projeto:
+   - O template de Jornada do Usuário.
    - Os diretórios de destino para protótipos e jornadas UX no projeto real.
-3. Leia o template com `view_file` antes de gerar qualquer artefato.
+3. Leia o template designado com `view_file` antes de gerar qualquer artefato.
 
 ---
 
 ## 2. Elaboração da Jornada do Usuário
 
 1. Leia o PRD `Draft` para compreender personas, dores e fluxos de interação.
-2. Utilize o template `USER-JOURNEY.md` encontrado no Bootstrap.
+2. Utilize o template de Jornada do Usuário encontrado no manifesto do projeto.
 3. Mapeie todas as etapas da jornada: Descoberta → Engajamento → Conversão → Retenção (ou conforme o template exigir).
-4. Salve o documento no diretório de UX designado pelo standard no projeto real.
+4. Salve o documento no diretório de UX designado pelo manifesto do projeto real.
 
 ---
 
 ## 3. Construção do Protótipo Funcional
 
-Para cada funcionalidade prototipada, crie uma pasta dedicada no diretório de protótipos designado pelo standard:
+Para cada funcionalidade prototipada, crie uma pasta dedicada no diretório de protótipos designado pelo manifesto do projeto:
 
 ```text
 [diretorio-de-prototipos]/[slug-da-feature]/
@@ -57,6 +57,6 @@ Todo protótipo de tela deve demonstrar de forma interativa ou via alternador:
 
 ## 4. Finalização e Vínculo
 
-1. Salve todos os artefatos nos diretórios designados pelo standard.
+1. Salve todos os artefatos nos diretórios designados pelo manifesto do projeto.
 2. Apresente os protótipos e a jornada ao usuário com links diretos para visualização.
 3. Aguarde a aprovação humana antes que o PRD avance para `Approved`.

@@ -10,9 +10,9 @@ Esta habilidade é utilizada pelo **Tech Lead / Architect** para converter espec
 ---
 
 ## 1. Bootstrap Obrigatório (Primeiro Passo)
-1. Leia o arquivo `.cache\standards\AGENT_BOOTSTRAP.md` com a ferramenta `view_file`.
-2. Consulte os padrões em `.cache/standards/architecture/api/` e `.cache/standards/architecture/data/` para regras de nomenclatura, verbos HTTP, versionamento, paginação e códigos de erro.
-3. Identifique o diretório canônico onde as especificações de API e Modelagem de Dados devem ser salvas.
+1. Leia a governança do projeto alvo acessando o arquivo `AGENTS.md` (ou `AI_GOVERNANCE.md`) na raiz do repositório.
+2. Consulte os padrões ditados pelo manifesto do projeto para regras de nomenclatura, verbos HTTP, versionamento, paginação e códigos de erro.
+3. Identifique o diretório canônico onde as especificações de API e Modelagem de Dados devem ser salvas segundo a governança local.
 
 ---
 
@@ -39,12 +39,12 @@ Esta habilidade é utilizada pelo **Tech Lead / Architect** para converter espec
 1. Elabore o esquema lógico/físico:
    - Definição de tabelas, entidades ou coleções.
    - Tipagem rigorosa, Constraints (NOT NULL, UNIQUE), Chaves Primárias/Estrangeiras e Índices de performance.
-2. Formato de saída estritamente conforme ditado pelo `.cache/standards`.
+2. Formato de saída estritamente conforme ditado pelo manifesto do projeto.
 
 ---
 
 ## 4. Finalização e Vínculo
 
-1. Salve os arquivos de contrato nos caminhos designados pelo `.cache/standards`.
+1. Salve os arquivos de contrato nos caminhos designados pelo manifesto do projeto.
 2. Vincule as referências (caminhos relativos) no ADR ou no PRD correspondente.
 3. Solicite aprovação técnica e submeta os artefatos para validação (Quality Gate).

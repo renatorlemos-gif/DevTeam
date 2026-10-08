@@ -13,9 +13,9 @@ Esta habilidade é utilizada pelo **Tech Lead / Architect** para documentar esco
 ---
 
 ## 1. Bootstrap Obrigatório (Primeiro Passo)
-1. Leia o arquivo `.cache\standards\AGENT_BOOTSTRAP.md` com a ferramenta `view_file`.
-2. Localize no mapa de recursos o template `ADR.md` (em `templates/architecture/`) e o diretório de destino.
-3. Leia o template com `view_file` antes de gerar qualquer artefato.
+1. Leia a governança do projeto alvo acessando o arquivo `AGENTS.md` (ou `AI_GOVERNANCE.md`) na raiz do repositório.
+2. Localize no manifesto do projeto onde está o template de ADR (Decisão Arquitetural) e o diretório de destino.
+3. Leia o template designado com `view_file` antes de gerar qualquer artefato.
 
 ---
 
@@ -35,5 +35,5 @@ Esta habilidade é utilizada pelo **Tech Lead / Architect** para documentar esco
    - **Decisão**: A solução escolhida de forma explícita.
    - **Matriz de Alternativas**: Tabela comparativa avaliando ao menos 2 opções com Prós, Contras e Motivo do Descarte da opção não selecionada.
    - **Consequências & Impactos**: Trade-offs aceitos e impacto em schemas/tabelas/APIs.
-4. Salve o documento no diretório designado pelo repositório de standards.
+4. Salve o documento no diretório designado pelo manifesto do projeto.
 5. Apresente a decisão ao usuário para homologação (`status: Accepted`).

@@ -10,9 +10,9 @@ Esta habilidade é utilizada pelo **Product Owner** para decompor a especificaç
 ---
 
 ## 1. Bootstrap Obrigatório (Primeiro Passo)
-1. Leia o arquivo `.cache\standards\AGENT_BOOTSTRAP.md` com a ferramenta `view_file`.
-2. Localize no mapa de recursos o template `USER-STORY.md` e `ACCEPTANCE-CRITERIA.md` (em `templates/product/`) e o diretório de destino.
-3. Leia os templates com `view_file` antes de iniciar a redação.
+1. Leia a governança do projeto alvo acessando o arquivo `AGENTS.md` (ou `AI_GOVERNANCE.md`) na raiz do repositório.
+2. Localize no manifesto do projeto onde estão os templates de Funcionalidades (Features) e Histórias de Usuário, bem como seus diretórios de destino.
+3. Leia os templates designados com `view_file` antes de iniciar a redação.
 
 ---
 
@@ -28,8 +28,8 @@ Esta habilidade é utilizada pelo **Product Owner** para decompor a especificaç
 
 O Product Owner NÃO deve ir direto para a criação de US nem atuar em lote. Ele deve:
 1. **Consumir** o PRD e os artefatos macro (Solution Definition).
-2. **Redigir os Drafts de TODAS as Feature Definitions** (FEAT-XXX) daquele PRD, usando estritamente o template `FEATURE-DEFINITION.md` recém-baixado do repositório central.
-   * **Avaliação de Impacto (Checkboxes Literais):** Para cada Feature, o PO DEVE preencher a seção de "Micro-Triagem" preservando e marcando com `[x]` os checkboxes literais do template, indicando explicitamente se haverá necessidade de refinamento de UX (telas) ou Arquitetura (contratos). O Orquestrador precisa desses checkboxes literais como gatilhos!
+2. **Redigir os Drafts de TODAS as Feature Definitions** daquele documento de Requisitos, usando estritamente o template de Feature indicado no manifesto do projeto.
+   * **Avaliação de Impacto:** Para cada Feature, o PO DEVE preencher a seção de "Micro-Triagem" preservando o formato do template, indicando explicitamente se haverá necessidade de refinamento de UX (telas) ou Arquitetura (contratos). O Orquestrador precisa dessas marcações como gatilhos!
    * **🛑 PARADA (Gate 1 - Prioritization)**: O Orquestrador pedirá ao humano para escolher **APENAS UMA Feature**.
 3. **Aguardar a Triagem Granular e Aprovação**: O PO aguarda enquanto UX e Arquitetura refinam a Feature Única escolhida e o Orquestrador coleta o "OK" humano.
    * **🛑 PARADA (Gate 2 - Feature Approval)**: O Orquestrador pede aprovação humana da Feature.
@@ -44,7 +44,7 @@ Para cada história desdobrada da Feature aprovada, formule obrigatoriamente:
    - **Critérios de Aceitação BDD (Gherkin)**: Cenários de sucesso (`Dado / Quando / Então`), validação de dados inválidos e exceções/resiliência.
    - **Diretrizes de Testes Automatizados**: Apontar o arquivo de teste alvo e comando de execução.
    - **Restrições Claras ("O que NÃO fazer")**: Proibições técnicas explícitas (ex: proibir mocks em prod, proibir hardcoding, exigir transação atômica).
-5. Salve o documento no diretório designado pelo standard.
+5. Salve o documento no diretório designado pelo manifesto do projeto.
 
 ---
 
