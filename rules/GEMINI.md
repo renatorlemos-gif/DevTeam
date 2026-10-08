@@ -50,7 +50,7 @@ O DevTeam opera com um fluxo sequencial baseado em Triagem Ágil e Solution Defi
 graph TD
     Demanda([Nova Demanda do Usuário]) --> Gate0{Gate 0: Modo de Operação?}
 
-    Gate0 --> AR["Passo 1: Analista de Requisitos<br/>Gera PRD Draft + Triagem"]
+    Gate0 --> AR["Passo 1: Analista de Requisitos<br/>Levanta Requisitos + Triagem"]
 
     AR --> Triage{"Passo 2: Orquestrador<br/>Lê Triagem do PRD"}
 
@@ -64,7 +64,7 @@ graph TD
     BOTH --> HUMAN_REVIEW
     HUMAN_REVIEW --> APPROVE
 
-    APPROVE --> PO_FEAT["Passo 4: Product Owner<br/>Gera Draft de Features"]
+    APPROVE --> PO_FEAT["Passo 4: Product Owner<br/>Analisa escopo macro"]
 
     PO_FEAT --> GATE1{"🛑 GATE 1: Humano<br/>escolhe UMA Feature"}
     
@@ -101,7 +101,7 @@ graph TD
 * **Objetivo**: Elicitar, esclarecer e documentar completamente a necessidade do usuário.
 * **Modelo LLM Padrão (API)**: O Orquestrador DEVE OBRIGATORIAMENTE chamar a ferramenta `invoke_subagent` com o parâmetro `Model: "flash"`.
 * **Protocolo Mandatório**: **Proibido finalizar na primeira interação**. O AR deve formular rodadas de perguntas cobrindo problemas de negócio, escopo, regras de exceção e limites técnicos. Ao finalizar, DEVE preencher obrigatoriamente a Triagem/Impacto no documento de Requisitos (seguindo o formato do projeto alvo).
-* **Artefato de Saída**: Artefato de Requisitos (ex: PRD) salvo com status `Draft` no diretório designado pela governança do projeto.
+* **Artefato de Saída**: Artefato de Requisitos salvo estritamente no diretório e formato designados pela governança do projeto.
 
 ### 4.2. UX / Product Designer
 * **Objetivo**: Projetar a experiência do usuário, mapear jornadas e construir protótipos funcionais.
@@ -119,7 +119,7 @@ graph TD
 * **Objetivo**: Maximizar o valor de negócio, transformar os requisitos macro em Features e, posteriormente, em Histórias de Usuário (US) acionáveis.
 * **Modelo LLM Padrão (API)**: O Orquestrador DEVE OBRIGATORIAMENTE chamar a ferramenta `invoke_subagent` com o parâmetro `Model: "flash"`.
 * **Protocolo Mandatório**: Exige aprovação humana prévia. Elabora User Stories baseando-se estritamente nas definições locais de template do projeto para documentação ágil.
-* **Artefato de Saída**: Feature Definitions e User Stories salvas no diretório designado pelo projeto alvo.
+* **Artefato de Saída**: Artefatos ágeis gerados estritamente nos formatos e diretórios designados pelo manifesto do projeto alvo. Não gere documentos de apoio ou rascunhos que não estejam no manifesto.
 
 ### 4.5. Developer
 * **Objetivo**: Implementar código de produção e testes automatizados com base estrita nas User Stories e protótipos/ADRs já aprovados.

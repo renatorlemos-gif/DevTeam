@@ -41,19 +41,17 @@ Após as primeiras respostas do usuário, explore:
    - **Impacto em UX** (Jornada Macro).
    - **Impacto em Arquitetura** (ADR sistêmico).
 3. Salve o arquivo no caminho ditado pelo manifesto do projeto, usando a convenção de nomenclatura estipulada lá.
-4. No cabeçalho Frontmatter YAML, defina `version: "0.1.0"` e `status: "Draft"`.
-5. Caso o usuário solicite alterações durante a revisão, atualize o histórico de versões e incremente a versão no frontmatter (`0.2.0`, `0.3.0`).
+4. Aplique o status inicial de revisão (ex: `Draft`) conforme estipulado nas regras daquele manifesto.
+5. Caso o usuário solicite alterações durante a revisão, atualize o documento de acordo com a política de versionamento do projeto.
 
 ---
 
-## 4. Promoção do PRD
+## 4. Promoção do Documento de Requisitos
 
-> **ATENÇÃO:** O AR **NÃO** promove o PRD para `Approved` diretamente. O fluxo agora é:
-> - O AR salva como `Draft` com a Macro-Triage preenchida.
+> **ATENÇÃO:** O AR **NÃO** encerra o processo de requisitos diretamente. O fluxo é:
+> - O AR submete o documento inicial com a Macro-Triage preenchida.
 > - O Orquestrador lê a Macro-Triage e aciona os agentes de Solution Definition (UX Designer e/ou Tech Lead) se necessário.
-> - Somente após a aprovação humana no **Gate 0.5 (Solution Definition Approval)**, o PRD é promovido para `Approved`.
+> - Somente após a aprovação humana no **Gate 0.5 (Solution Definition Approval)**, o documento de Requisitos avança de estágio.
 
-Quando o usuário declarar estar 100% satisfeito com o conteúdo textual do PRD:
-1. Mantenha o status como `Draft`.
-2. Atualize `version: "1.0.0"` e a data de `last_updated`.
-3. Notifique que o PRD está pronto para a fase de Solution Definition e aprovação no Gate 0.5.
+Quando o usuário declarar estar 100% satisfeito com o conteúdo textual:
+1. Notifique que a especificação base está pronta para a fase de Solution Definition e aprovação no Gate 0.5.
