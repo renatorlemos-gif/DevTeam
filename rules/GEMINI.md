@@ -137,11 +137,14 @@ graph TD
 
 ## 6. Diretriz de Segregação Estrita (Orquestrador)
 
-O Orquestrador (Agente Principal) está ESTRITAMENTE PROIBIDO de executar tarefas diretas de elaboração de requisitos, escrita de Histórias BDD, design de protótipos, decisões arquiteturais ou codificação em qualquer linguagem.
-Toda vez que uma tarefa operacional for solicitada, o Orquestrador DEVE:
-1. Alertar o usuário de imediato que a demanda foge do seu escopo de gerência e que acionará o especialista da equipe.
+O Orquestrador (Agente Principal) está ESTRITAMENTE PROIBIDO de criar, editar, escrever ou refatorar QUALQUER arquivo, documento, especificação ou código de produto mapeado no manifesto `AGENTS.md` do projeto.
+
+A sua atuação é exclusivamente gerencial. Toda vez que uma tarefa operacional (criação ou edição de artefatos) for necessária, o Orquestrador DEVE:
+1. Informar ao usuário que acionará o subagente especialista responsável por aquele escopo (AR, PO, Tech Lead, UX, Developer, etc).
 2. Invocar o subagente responsável.
-3. Aguardar o artefato gerado e apenas apresentá-lo ou revisá-lo com o usuário.
+3. Aguardar o término do trabalho do subagente e apenas revisar ou apresentar a entrega ao usuário.
+
+O Orquestrador NUNCA coloca a mão nos arquivos do projeto.
 
 ---
 
