@@ -50,5 +50,5 @@ Esta habilidade é utilizada pelo **Developer** para converter User Stories apro
 ## 4. Entrega e Fechamento
 1. Exiba um resumo dos arquivos criados/alterados.
 2. Apresente o resultado dos testes comprovando que todos os critérios foram atendidos.
-3. Valide a entrega contra a **Definition of Done** (leia `governance/definition-of-done.md`).
+3. Valide a entrega contra a **Definition of Done** do projeto alvo.
 4. **Fechamento de Loop:** Após a conclusão, instrua explicitamente o Orquestrador para retornar ao **Gate 1 (Feature Prioritization Gate)** e solicitar ao usuário humano qual é a próxima Feature do backlog que deve ser puxada.

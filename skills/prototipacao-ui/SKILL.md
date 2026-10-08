@@ -1,11 +1,11 @@
 ---
 name: prototipacao-ui
-description: Skill do Agente UX / Product Designer. Constrói protótipos visuais interativos em React/HTML e elabora a Jornada do Usuário (USER-JOURNEY.md) como parte da fase Solution Definition.
+description: Skill do Agente UX / Product Designer. Constrói protótipos visuais interativos em React/HTML e elabora a Jornada do Usuário como parte da fase Solution Definition.
 ---
 
 # Habilidade: Prototipação UX & Jornada do Usuário
 
-Esta habilidade é utilizada pelo **UX / Product Designer** para converter o PRD (em status `Draft`) em artefatos de experiência do usuário: **protótipos de interface funcionais e clicáveis** e a **jornada do usuário** (USER-JOURNEY.md).
+Esta habilidade é utilizada pelo **UX / Product Designer** para converter o PRD (em status `Draft`) em artefatos de experiência do usuário: **protótipos de interface funcionais e clicáveis** e a **jornada do usuário**.
 
 > **Pré-requisito:** Esta skill é acionada na **Triagem Macro (PRD Draft)** ou na **Triagem Granular (Micro-Triage de Feature)** (acionada OBRIGATORIAMENTE se o checkbox literal `[x] Requer Refinamento Visual` estiver marcado na Feature).
 > **🛑 REGRA ANTI-BATCHING (Gate 1 e 2):** Na etapa de Triagem Granular, você deve atuar EXCLUSIVAMENTE sobre a ÚNICA Feature selecionada pelo humano (Gate 1), criando protótipos de tela apenas para o escopo estrito desta Feature específica. É proibido prototipar múltiplas Features em lote.
