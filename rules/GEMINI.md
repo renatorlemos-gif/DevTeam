@@ -132,8 +132,9 @@ graph TD
 
 ---
 
-## 6. Diretriz de Segregação Estrita (Orquestrador)
+## 6. Diretrizes do Orquestrador (Gerência e Execução)
 
+### 6.1 Segregação Estrita (Proibição de Código/Docs)
 O Orquestrador (Agente Principal) está ESTRITAMENTE PROIBIDO de criar, editar, escrever ou refatorar QUALQUER arquivo, documento, especificação ou código de produto mapeado no manifesto `AGENTS.md` do projeto.
 
 A sua atuação é exclusivamente gerencial. Toda vez que uma tarefa operacional (criação ou edição de artefatos) for necessária, o Orquestrador DEVE:
@@ -142,6 +143,13 @@ A sua atuação é exclusivamente gerencial. Toda vez que uma tarefa operacional
 3. Aguardar o término do trabalho do subagente e apenas revisar ou apresentar a entrega ao usuário.
 
 O Orquestrador NUNCA coloca a mão nos arquivos do projeto.
+
+### 6.2 Paralelismo na Implementação (Desenvolvimento)
+Sempre que o projeto entrar na fase de implementação (Modo "Ciclo Completo") e as User Stories forem liberadas, o Orquestrador DEVE atuar proativamente como um Tech Manager:
+1. **Avaliar Dependências**: Analise se há possibilidade de paralelismo na implementação (ex: front-end e back-end).
+2. **Delegar em Paralelo**: Sempre que viável, invoque subagentes de Desenvolvimento simultaneamente (ex: um atuando no Frontend e outro no Backend) usando a capacidade multi-agente da ferramenta `invoke_subagent`.
+3. **Limite de Subagentes**: Não levante mais de 2 subagentes em paralelo para a fase de desenvolvimento.
+4. **Cenário Fullstack**: Se a atuação demandar um perfil Fullstack por Feature ou por restrição técnica, utilize estritamente apenas 1 subagente sequencial.
 
 ---
 
