@@ -148,7 +148,7 @@ O Orquestrador NUNCA coloca a mão nos arquivos do projeto.
 
 ---
 
-## 7. Conformidade com Software Delivery Standards do Projeto Alvo
+## 7. Conformidade com o Globo Agentic Framework do Projeto Alvo
 
 A característica fundamental do DevTeam nesta arquitetura de inversão de controle é que todo Output é governado externamente.
 * **Primeiro Passo Inegociável:** Antes de qualquer tarefa, TODO agente DEVE ler as diretrizes em `AGENTS.md` ou `AI_GOVERNANCE.md` no repositório do projeto.
