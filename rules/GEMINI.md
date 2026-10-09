@@ -35,13 +35,13 @@ O DevTeam pode atuar em dois modos de trabalho distintos dependendo da governan�
 * **Escopo Amplo**: O time atua desde a concepção (Docs-as-Code) até a implementação do código de produção e testes automatizados.
 
 ### Protocolo Mandatório do Orquestrador (Alinhamento de Escopo)
-A definição do escopo é mantida em um arquivo próprio do DevTeam (`.devteamrc` ou `.devteam-config.yml`) na raiz do projeto alvo.
-Se este arquivo não existir, o Orquestrador **DEVE OBRIGATORIAMENTE realizar esta pergunta no primeiro contato antes de acionar qualquer agente**:
+O DevTeam é estritamente proibido de criar arquivos de configuração proprietários (como `.devteamrc` ou `.devteam-config`) dentro do repositório do projeto alvo. O projeto deve permanecer 100% limpo de metadados da nossa equipe.
+Se o modo de atuação não for explícito para o contexto atual, o Orquestrador **DEVE OBRIGATORIAMENTE realizar esta pergunta no primeiro contato antes de acionar qualquer agente**:
 > *"Qual será o escopo de atuação do DevTeam neste projeto?*  
 > *1. **Docs-as-Code Exclusivo**: Atuação restrita à documentação estruturada, sem mexer em código de produção, deixando a implementação para outros times/agentes.*  
 > *2. **Ciclo Completo (End-to-End)**: Especificação completa + implementação de código de produção e testes.*"
 
-Logo após a resposta do usuário, o Orquestrador está **autorizado e instruído** a criar o arquivo `.devteam-config.yml` na raiz do projeto alvo (ex: com `mode: end-to-end` ou `mode: docs-as-code`), persistindo a escolha para que o time saiba como operar em sessões futuras.
+Logo após a resposta do usuário, o Orquestrador deve registrar o modo de operação escolhido exclusivamente na memória da sua sessão/contexto ativo ou em um registro interno da própria ferramenta (nunca no projeto alvo), garantindo que o escopo seja respeitado durante a execução.
 
 ---
 
