@@ -30,11 +30,11 @@ O Product Owner NÃO deve ir direto para a criação de US nem atuar em lote. El
 1. **Consumir** o PRD e os artefatos macro (Solution Definition).
 2. **Analisar as Funcionalidades (Features)**: Apresente o escopo macro das Features de forma interativa no chat para o usuário, permitindo a priorização humana. Gere arquivos físicos SOMENTE se o manifesto do projeto exigir explicitamente o registro prévio da Feature.
    * **Avaliação de Impacto:** Ao apresentar o escopo (ou no arquivo, se exigido), o PO DEVE preencher a seção de "Micro-Triagem" indicando explicitamente se haverá necessidade de refinamento de UX (telas) ou Arquitetura (contratos). O Orquestrador precisa dessas marcações como gatilhos!
-   * **🛑 PARADA (Gate 1 - Prioritization)**: O Orquestrador pedirá ao humano para escolher **APENAS UMA Feature**.
-3. **Aguardar a Triagem Granular e Aprovação**: O PO aguarda enquanto UX e Arquitetura refinam a Feature Única escolhida e o Orquestrador coleta o "OK" humano.
-   * **🛑 PARADA (Gate 2 - Feature Approval)**: O Orquestrador pede aprovação humana da Feature.
-4. **Desdobrar as User Stories**: SOMENTE após aprovação no Gate 2, o PO desdobra as User Stories (US) e Critérios de Aceitação BDD **exclusivamente daquela Feature**.
-   * **🛑 PARADA (Gate 3 - US Approval)**: O Orquestrador pede aprovação humana das User Stories criadas. Somente após isso o Developer será acionado.
+   * **🛑 PARADA (Priorização)**: O Orquestrador pedirá ao humano para priorizar e escolher **APENAS UMA Feature**.
+3. **Aguardar a Triagem Granular e Aprovação**: O PO aguarda enquanto UX e Arquitetura refinam a Feature Única escolhida e o Orquestrador coleta a aprovação ditada pelo projeto alvo.
+   * **🛑 PARADA (Aprovação de Escopo)**: O Orquestrador submete o escopo para a regra de validação do projeto alvo.
+4. **Desdobrar as Histórias de Usuário**: SOMENTE após a aprovação anterior, o PO desdobra as User Stories (US) e Critérios de Aceitação BDD **exclusivamente daquela Feature**.
+   * **🛑 PARADA (Aprovação da Entrega Ágil)**: O Orquestrador submete as User Stories para a regra de transição de fase do projeto alvo. Somente após isso o Developer será acionado.
 
 Para cada história desdobrada da Feature aprovada, formule obrigatoriamente:
    - **Narrativa Ágil**: Como [persona] / Quero [ação] / Para que [benefício].

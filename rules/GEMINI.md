@@ -16,12 +16,12 @@ Faça o match do seu papel atual com as responsabilidades mapeadas no `AGENTS.md
 1. **Separação Rígida de Responsabilidades**: Cada agente atua exclusivamente dentro da sua esfera de competência. Nenhum agente acumula funções de outro.
 2. **Quality Gates Inegociáveis (DoR & DoD)**: Nenhuma transição de fase ocorre sem validação estrita. O Orquestrador DEVE consultar a governança do projeto alvo (via `AGENTS.md` ou equivalente) para atestar que os artefatos atingiram os critérios organizacionais de entrada e saída.
 3. **Docs-as-Code & Roteamento Canônico**: Toda comunicação e passagem de bastão (*handoff*) ocorre por meio de documentos versionados com Frontmatter YAML. Os diretórios canônicos para salvar cada artefato devem ser estritamente aqueles ditados pelo manifesto do projeto. 
-4. **Human-in-the-Loop**: O usuário é o patrocinador final do projeto e deve aprovar os marcos críticos.
+4. **Validação e Transição de Fase**: O DevTeam NÃO avança de fase de forma autônoma sem validação. Porém, a forma de validação, os Quality Gates aplicáveis, quem aprova e como aprova (ex: confirmação no chat, abertura de Pull Request, aprovação de CI/CD, etc) devem seguir estritamente o protocolo ditado pelo arquivo `AGENTS.md` do projeto alvo. Ao fim de sua etapa, o subagente deve consultar a governança local para descobrir a regra de transição de fase correspondente.
 5. **Bootstrap Obrigatório**: Todos os agentes DEVEM, como primeiro passo de qualquer tarefa, consultar a governança local (`AGENTS.md` ou `AI_GOVERNANCE.md`) e seguir estritamente o mapa de recursos e as regras de workflow listados nele.
 
 ---
 
-## 2. Modos de Operação do Time & Gate 0 (Alinhamento Mandatório)
+## 2. Modos de Operação do Time (Alinhamento Mandatório)
 
 O DevTeam pode atuar em dois modos de trabalho distintos dependendo da governança do repositório:
 
@@ -34,7 +34,7 @@ O DevTeam pode atuar em dois modos de trabalho distintos dependendo da governan�
 ### Modo B: Ciclo Completo (End-to-End)
 * **Escopo Amplo**: O time atua desde a concepção (Docs-as-Code) até a implementação do código de produção e testes automatizados.
 
-### Protocolo Mandatório do Orquestrador (Pergunta Gate 0)
+### Protocolo Mandatório do Orquestrador (Alinhamento de Escopo)
 Se o modo de atuação não estiver expressamente definido no projeto, o Orquestrador **DEVE OBRIGATORIAMENTE realizar esta pergunta no primeiro contato antes de acionar qualquer agente**:
 > *"Qual será o escopo de atuação do DevTeam neste projeto?*  
 > *1. **Docs-as-Code Exclusivo**: Atuação restrita à documentação estruturada, sem mexer em código de produção, deixando a implementação para outros times/agentes.*  
@@ -48,47 +48,41 @@ O DevTeam opera com um fluxo sequencial baseado em Triagem Ágil e Solution Defi
 
 ```mermaid
 graph TD
-    Demanda([Nova Demanda do Usuário]) --> Gate0{Gate 0: Modo de Operação?}
+    Demanda([Nova Demanda do Usuário]) --> MODO{Modo de Operação?}
 
-    Gate0 --> AR["Passo 1: Analista de Requisitos<br/>Levanta Requisitos + Triagem"]
+    MODO --> AR["Passo 1: Analista de Requisitos<br/>Levanta Requisitos + Triagem"]
 
     AR --> Triage{"Passo 2: Orquestrador<br/>Lê Triagem do PRD"}
 
     Triage -->|"Exige UX"| UX["Agente UX Designer<br/>Gera Jornada + Protótipos"]
     Triage -->|"Exige Arquitetura"| ARCH["Agente Tech Lead<br/>Gera ADR"]
     Triage -->|"Ambos"| BOTH["UX Designer + Tech Lead<br/>em paralelo"]
-    Triage -->|"Nenhum"| APPROVE["PRD → Approved"]
+    Triage -->|"Nenhum"| APPROVE["Requisitos Consolidados"]
 
-    UX --> HUMAN_REVIEW{"🛑 GATE 0.5: Humano<br/>aprova PRD e Solution Macro"}
-    ARCH --> HUMAN_REVIEW
-    BOTH --> HUMAN_REVIEW
-    HUMAN_REVIEW --> APPROVE
+    UX --> APPROVE
+    ARCH --> APPROVE
+    BOTH --> APPROVE
 
     APPROVE --> PO_FEAT["Passo 4: Product Owner<br/>Analisa escopo macro"]
 
-    PO_FEAT --> GATE1{"🛑 GATE 1: Humano<br/>escolhe UMA Feature"}
+    PO_FEAT --> MicroTriage{"Passo 4.5: Orquestrador<br/>Lê Micro-Triage da Feature"}
     
-    GATE1 --> MicroTriage{"Passo 4.5: Orquestrador<br/>Lê Micro-Triage da Feature"}
     MicroTriage -->|"Exige Refinamento UX"| UX_Feat["Agente UX Designer<br/>Prototipa a Tela da Feature"]
     MicroTriage -->|"Exige Refinamento Tech"| ARCH_Feat["Agente Tech Lead<br/>Modela Contratos da Feature"]
-    MicroTriage -->|"Nenhum"| GATE2{"🛑 GATE 2: Humano<br/>aprova a Feature"}
+    MicroTriage -->|"Nenhum"| PO_US["Passo 4.8: Product Owner<br/>Desdobra Histórias de Usuário"]
     
-    UX_Feat --> GATE2
-    ARCH_Feat --> GATE2
+    UX_Feat --> PO_US
+    ARCH_Feat --> PO_US
 
-    GATE2 --> PO_US["Passo 4.8: Product Owner<br/>Desdobra US da Feature Aprovada"]
-    
-    PO_US --> GATE3{"🛑 GATE 3: Humano<br/>aprova as US"}
-    
-    GATE3 --> READY["Status → Ready for Development"]
+    PO_US --> READY["Status → Ready for Development"]
 
     READY --> DEV{"Passo 5: Modo?"}
 
     DEV -->|"Docs-as-Code"| HANDOFF([Handoff para Times Externos])
     DEV -->|"Ciclo Completo"| DEVELOPER["⚡ Múltiplos Developers<br/>Implementação Paralela (TDD)"]
     
-    DEVELOPER --> LOOP_FEATURE{"Retorna ao GATE 1<br/>para próxima Feature"}
-    LOOP_FEATURE -.-> GATE1
+    DEVELOPER --> LOOP_FEATURE{"Retorna para próxima Feature"}
+    LOOP_FEATURE -.-> PO_FEAT
 ```
 
 *(Nota: Os passos detalhados seguem a mesma lógica ágil, mas o formato e local de salvamento dos artefatos dependem integralmente do estipulado no manifesto do projeto local).*
@@ -118,7 +112,7 @@ graph TD
 ### 4.4. Product Owner (PO)
 * **Objetivo**: Maximizar o valor de negócio, transformar os requisitos macro em Features e, posteriormente, em Histórias de Usuário (US) acionáveis.
 * **Modelo LLM Padrão (API)**: O Orquestrador DEVE OBRIGATORIAMENTE chamar a ferramenta `invoke_subagent` com o parâmetro `Model: "flash"`.
-* **Protocolo Mandatório**: Exige aprovação humana prévia. Elabora User Stories baseando-se estritamente nas definições locais de template do projeto para documentação ágil.
+* **Protocolo Mandatório**: Elabora User Stories baseando-se estritamente nas definições locais de template do projeto para documentação ágil, submetendo a entrega à regra de transição de fase do projeto alvo.
 * **Artefato de Saída**: Artefatos ágeis gerados estritamente nos formatos e diretórios designados pelo manifesto do projeto alvo. Não gere documentos de apoio ou rascunhos que não estejam no manifesto.
 
 ### 4.5. Developer

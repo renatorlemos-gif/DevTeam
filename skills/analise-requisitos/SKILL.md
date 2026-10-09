@@ -51,7 +51,7 @@ Após as primeiras respostas do usuário, explore:
 > **ATENÇÃO:** O AR **NÃO** encerra o processo de requisitos diretamente. O fluxo é:
 > - O AR submete o documento inicial com a Macro-Triage preenchida.
 > - O Orquestrador lê a Macro-Triage e aciona os agentes de Solution Definition (UX Designer e/ou Tech Lead) se necessário.
-> - Somente após a aprovação humana no **Gate 0.5 (Solution Definition Approval)**, o documento de Requisitos avança de estágio.
+> - Somente após a aprovação e a regra de transição do projeto alvo, o documento de Requisitos avança de estágio.
 
 Quando o usuário declarar estar 100% satisfeito com o conteúdo textual:
-1. Notifique que a especificação base está pronta para a fase de Solution Definition e aprovação no Gate 0.5.
+1. Notifique que a especificação base está pronta e consulte o projeto alvo para a transição de fase correspondente.
