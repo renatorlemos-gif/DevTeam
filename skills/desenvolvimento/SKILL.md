@@ -19,7 +19,7 @@ Esta habilidade é utilizada pelo **Developer** para converter User Stories apro
 
 ## 2. Verificação de Entrada
 
-1. **Validação de Feature e Gate 3**: Antes de iniciar o código, valide se a User Story pertence a uma Feature Aprovada **E se as próprias User Stories receberam aprovação humana explícita no Gate 3 (Ready for Development Gate)**. Caso não tenham passado pelo Gate 3, **aborte a execução** e solicite ao Orquestrador que colete a aprovação humana. O Developer foca estritamente na entrega "Feature a Feature", nunca misturando US de Features diferentes simultaneamente.
+1. **Validação de Transição**: Antes de iniciar o código, valide se os artefatos anteriores (User Stories e Protótipos) já passaram pelo crivo de validação local do framework do projeto atual. Caso não tenham passado pela regra de validação, **aborte a execução** e solicite ao Orquestrador que aplique a governança. O Developer foca estritamente na entrega "Feature a Feature", nunca misturando US de Features diferentes simultaneamente.
 2. Leia a User Story atribuída e identifique:
    - Critérios de aceitação BDD (cenários Gherkin).
    - Restrições explícitas ("O que NÃO fazer").
@@ -51,4 +51,4 @@ Esta habilidade é utilizada pelo **Developer** para converter User Stories apro
 1. Exiba um resumo dos arquivos criados/alterados.
 2. Apresente o resultado dos testes comprovando que todos os critérios foram atendidos.
 3. Valide a entrega contra a **Definition of Done** do projeto alvo.
-4. **Fechamento de Loop:** Após a conclusão, instrua explicitamente o Orquestrador para retornar à etapa de priorização de escopo e solicitar ao usuário humano qual é a próxima Feature do backlog que deve ser puxada.
+4. **Fechamento de Loop:** Após a conclusão, instrua explicitamente o Orquestrador para retornar à etapa de priorização de escopo e puxar a próxima Feature do backlog.

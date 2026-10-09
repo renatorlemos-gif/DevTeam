@@ -30,7 +30,7 @@ O Product Owner NÃO deve ir direto para a criação de US nem atuar em lote. El
 1. **Consumir** o PRD e os artefatos macro (Solution Definition).
 2. **Analisar as Funcionalidades (Features)**: Apresente o escopo macro das Features de forma interativa no chat para o usuário, permitindo a priorização humana. Gere arquivos físicos SOMENTE se o manifesto do projeto exigir explicitamente o registro prévio da Feature.
    * **Avaliação de Impacto:** Ao apresentar o escopo (ou no arquivo, se exigido), o PO DEVE preencher a seção de "Micro-Triagem" indicando explicitamente se haverá necessidade de refinamento de UX (telas) ou Arquitetura (contratos). O Orquestrador precisa dessas marcações como gatilhos!
-   * **🛑 PARADA (Priorização)**: O Orquestrador pedirá ao humano para priorizar e escolher **APENAS UMA Feature**.
+   * **🛑 PARADA (Priorização)**: O Orquestrador pedirá a priorização e escolherá **APENAS UMA Feature**.
 3. **Aguardar a Triagem Granular e Aprovação**: O PO aguarda enquanto UX e Arquitetura refinam a Feature Única escolhida e o Orquestrador coleta a aprovação ditada pelo projeto alvo.
    * **🛑 PARADA (Aprovação de Escopo)**: O Orquestrador submete o escopo para a regra de validação do projeto alvo.
 4. **Desdobrar as Histórias de Usuário**: SOMENTE após a aprovação anterior, o PO desdobra as User Stories (US) e Critérios de Aceitação BDD **exclusivamente daquela Feature**.
@@ -48,6 +48,6 @@ Para cada história desdobrada da Feature aprovada, formule obrigatoriamente:
 
 ---
 
-## 4. Portão de Aprovação
-Apresente a lista de histórias, contratos e restrições ao usuário no chat e aguarde a confirmação explícita:
-> *"Histórias de Usuário geradas e salvas. Você aprova este escopo para implementação pelo Developer?"*
+## 4. Submissão para Transição
+Apresente a lista de histórias, contratos e restrições e submeta o lote para a validação local do framework do projeto atual:
+> *"Histórias de Usuário geradas e salvas. Submetendo para a regra de transição de fase correspondente do projeto."*

@@ -8,7 +8,7 @@ description: Skill do Agente UX / Product Designer. Constrói protótipos visuai
 Esta habilidade é utilizada pelo **UX / Product Designer** para converter o PRD (em status `Draft`) em artefatos de experiência do usuário: **protótipos de interface funcionais e clicáveis** e a **jornada do usuário**.
 
 > **Pré-requisito:** Esta skill é acionada na **Triagem Macro (PRD Draft)** ou na **Triagem Granular (Micro-Triage de Feature)** (acionada OBRIGATORIAMENTE se o checkbox literal `[x] Requer Refinamento Visual` estiver marcado na Feature).
-> **🛑 REGRA ANTI-BATCHING:** Na etapa de Triagem Granular, você deve atuar EXCLUSIVAMENTE sobre a ÚNICA Feature selecionada pelo humano na etapa de priorização, criando protótipos de tela apenas para o escopo estrito desta Feature específica. É proibido prototipar múltiplas Features em lote.
+> **🛑 REGRA ANTI-BATCHING:** Na etapa de Triagem Granular, você deve atuar EXCLUSIVAMENTE sobre a ÚNICA Feature selecionada na etapa de priorização, criando protótipos de tela apenas para o escopo estrito desta Feature específica. É proibido prototipar múltiplas Features em lote.
 
 ---
 
@@ -59,4 +59,4 @@ Todo protótipo de tela deve demonstrar de forma interativa ou via alternador:
 
 1. Salve todos os artefatos nos diretórios designados pelo manifesto do projeto.
 2. Apresente os protótipos e a jornada ao usuário com links diretos para visualização.
-3. Aguarde a aprovação humana antes que o PRD avance para `Approved`.
+3. Aguarde a validação local do framework do projeto atual antes de avançar de fase.
